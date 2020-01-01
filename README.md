@@ -1,8 +1,7 @@
 # Dynamic Beat Rhythm Game 
 
 나동빈님의 유튜브 강의를 보고 만든 Java 리듬게임입니다.   
-시연 영상은 아래에 embeded video 또는 아래의 url에서 확인하실 수 있습니다.   
-
+[시연 영상](https://www.youtube.com/watch?v=0PYuyCtW5Pw)은 아래의 Youtube url에서 확인하실 수 있습니다.   
 [![Dynamic Beat 시연 영상](https://img.youtube.com/vi/0PYuyCtW5Pw/0.jpg)](https://www.youtube.com/watch?v=0PYuyCtW5Pw)  
 Youtube url : https://www.youtube.com/watch?v=0PYuyCtW5Pw&feature=youtu.be
 
