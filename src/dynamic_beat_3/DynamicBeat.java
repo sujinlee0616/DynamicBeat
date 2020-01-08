@@ -22,7 +22,7 @@ public class DynamicBeat extends JFrame {
 		setVisible(true);
 		
 		introBackground = new ImageIcon(Main.class.getResource("../images/introBackground(Title2).jpg")).getImage();
-		Music introMusic = new Music("introMusic.mp3", true);
+		Music introMusic = new Music("introMusic.mp3", true); // true => 인트로뮤직 무한재생
 		introMusic.start();
 	}
 	
