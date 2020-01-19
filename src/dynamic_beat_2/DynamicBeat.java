@@ -32,14 +32,14 @@ public class DynamicBeat extends JFrame {
 		// main class의 위치를 기반으로 해서 저 파일을 얻어온 다음, 그것의 이미지 인스턴스를 introBackground 변수에 넣어서 초기화.
 	}
 	
-	// 메소드 ㄴ
+	// 메소드 
 	// paint : JFrame을 상속받은 GUI 프로그램에서 가장 첫번째로 화면을 그려주는 함수.
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		//프로그램 화면 크기만큼 이미지를 생성해서, 그 이미지에 우리가 원하는 내용을 그려줌
 		screenGraphic = screenImage.getGraphics();
 		screenDraw(screenGraphic);
-		//screenDraw 함수를 이용해서 그려줌. ㄴ
+		//screenDraw 함수를 이용해서 그려줌. 
 		g.drawImage(screenImage, 0, 0, null);
 		// 게임창에 스크린 이미지가 그려짐 
 	}

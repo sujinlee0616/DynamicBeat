@@ -62,7 +62,7 @@ public class Music extends Thread{
 			}while(isLoop);
 			// 곡을 실행시킨 후, isLoop가 true면 무한반복 시킴 
 		}catch (Exception e) {
-			System.out.println(e.getMessage()); //오류발생할 경우 오류메시지 출력 ㄴ
+			System.out.println(e.getMessage()); //오류발생할 경우 오류메시지 출력 
 		}
 	}
 
