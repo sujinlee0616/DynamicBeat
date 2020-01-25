@@ -408,7 +408,7 @@ public class DynamicBeat extends JFrame {
 			// 게임정보 및 판정선 이미지
 			g.drawImage(noteRouteLineImage, 1052, 30, null);
 			g.drawImage(gameInfoImage, 0, 660, null); // 게임 정보 이미지 - 가수, 곡명, 점수 등이 나오는 반투명 검정색 영역 
-			g.drawImage(judgementLineImage, 0, 580, null); // 판정선(빨간색) 이미지 
+			g.drawImage(judgementLineImage, 0, 580, null); // 판정선(빨간색 위아래 두 줄) 이미지 
 			// note 이미지
 			g.drawImage(noteBasicImage, 228, 120, null);
 			g.drawImage(noteBasicImage, 332, 580, null);
