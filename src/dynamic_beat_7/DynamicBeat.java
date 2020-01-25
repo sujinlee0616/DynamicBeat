@@ -52,7 +52,7 @@ public class DynamicBeat extends JFrame {
 	private Image selectedImage;
 	private Music selectedMusic;
 	
-	private int	nowSelected = 0; // ÇöÀç ¼±ÅÃµÈ Æ®·¢ÀÇ °î¹øÈ£ 
+	private int	nowSelected = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È£ 
 	
 	public DynamicBeat() {
 		setUndecorated(true);
@@ -136,7 +136,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// °ÔÀÓ ½ÃÀÛ ÀÌº¥Æ®
+				// ì‹œì‘ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				introMusic.close();
 				selectTrack(0);
 				startButton.setVisible(false);
@@ -208,7 +208,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿ŞÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì™¼ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				selectLeft();
 			}
 		});
@@ -239,7 +239,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿À¸¥ÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì˜¤ë¥¸ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				selectRight();
 			}
 		});
@@ -283,7 +283,7 @@ public class DynamicBeat extends JFrame {
 		this.repaint();
 	}
 	
-	// °î ¼³Á¤ 
+	// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public void selectTrack(int nowSelected) {
 		if(selectedMusic != null)
 			selectedMusic.close();
@@ -295,9 +295,9 @@ public class DynamicBeat extends JFrame {
 		selectedMusic.start();
 	}
 	
-	// leftButton ±â´É
+	// leftButton ï¿½ï¿½ï¿½
 	public void selectLeft() {
-		// °¡Àå ¿ŞÂÊ¿¡ ÀÖ´Â °î¿¡¼­ leftButton ´©¸£¸é ¸Ç ¿À¸¥ÂÊ¿¡ ÀÖ´Â °îÀ¸·Î °¡°Ô²û Ã³¸® 
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½î¿¡ï¿½ï¿½ leftButton ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô²ï¿½ Ã³ï¿½ï¿½ 
 		if(nowSelected == 0)
 			nowSelected = trackList.size() -1;
 		else 
@@ -306,9 +306,9 @@ public class DynamicBeat extends JFrame {
 
 	}
 	
-	// leftButton ±â´É
+	// leftButton ï¿½ï¿½ï¿½
 		public void selectRight() {
-			// °¡Àå ¿ŞÂÊ¿¡ ÀÖ´Â °î¿¡¼­ leftButton ´©¸£¸é ¸Ç ¿À¸¥ÂÊ¿¡ ÀÖ´Â °îÀ¸·Î °¡°Ô²û Ã³¸® 
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½î¿¡ï¿½ï¿½ leftButton ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô²ï¿½ Ã³ï¿½ï¿½ 
 			if(nowSelected == trackList.size()-1)
 				nowSelected = 0;
 			else 

@@ -1,3 +1,4 @@
+// [작업요약] 메인 → 곡 선택 → 게임 시작 화면 디자인. 
 package dynamic_beat_6;
 
 import java.awt.Color;
@@ -18,6 +19,7 @@ public class DynamicBeat extends JFrame {
 	private Image screenImage;
 	private Graphics screenGraphic;
 
+	// 버튼 이미지 초기화 
 	private ImageIcon exitButtonEnteredImage = new ImageIcon(Main.class.getResource("../images/exitButtonEntered.png"));
 	private ImageIcon exitButtonBasicImage = new ImageIcon(Main.class.getResource("../images/exitButtonBasic.png"));
 	private ImageIcon startButtonEnteredImage = new ImageIcon(
@@ -33,12 +35,14 @@ public class DynamicBeat extends JFrame {
 
 	private Image titleImage = new ImageIcon(Main.class.getResource("../images/Mighty Love Title Image.png"))
 			.getImage();
+	// selectedImage : 현재 선택된 곡의 이미지 - 우선 이미지 하나를 임의로 지정해줬음. 
 	private Image selectedImage = new ImageIcon(Main.class.getResource("../images/Mighty Love Start Image.png"))
 			.getImage();
 	private Image background = new ImageIcon(Main.class.getResource("../images/introBackground(Title2).jpg"))
 			.getImage();
 	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
 
+	// 버튼 초기화
 	private JButton exitButton = new JButton(exitButtonBasicImage);
 	private JButton startButton = new JButton(startButtonBasicImage);
 	private JButton quitButton = new JButton(quitButtonBasicImage);
@@ -49,6 +53,7 @@ public class DynamicBeat extends JFrame {
 
 	private boolean isMainScreen = false;
 
+	// 생성자 
 	public DynamicBeat() {
 		setUndecorated(true);
 		setTitle("Dynamic Beat");
@@ -118,8 +123,12 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ���� ���� �̺�Ʈ
-				startButton.setVisible(false);
+				// <시작 버튼 이벤트> 
+				// 시작 버튼 눌러서 인트로 화면에서 메인 화면으로 넘어가면, 
+				// Start/Quit 버튼은 보이지 않고
+				// 좌/우 이동 버튼과 메인 화면의 배경이미지 보이게. 
+				// 그리고 isMainScreen을 true로 변경해줌. 
+				startButton.setVisible(false); 
 				quitButton.setVisible(false);
 				leftButton.setVisible(true);
 				rightButton.setVisible(true);
@@ -188,7 +197,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ���� ��ư �̺�Ʈ 
+				// 왼쪽 버튼 이벤트 
 			}
 		});
 		add(leftButton);
@@ -218,7 +227,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ������ ��ư �̺�Ʈ 
+				// 오른쪽 버튼 이벤트 
 			}
 		});
 		add(rightButton);
@@ -245,7 +254,7 @@ public class DynamicBeat extends JFrame {
 		introMusic.start();
 	}
 
-	public void paint(Graphics g) {
+	public void paint(Graphics g) { 
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
 		screenDraw(screenGraphic);
@@ -254,11 +263,16 @@ public class DynamicBeat extends JFrame {
 
 	public void screenDraw(Graphics g) {
 		g.drawImage(background, 0, 0, null);
-		if (isMainScreen) {
+		// g.drawImage : add된 요소가 아니라, 단순히 이미지를 화면에 출력할 때 사용
+		// 				일반적으로 이미지나 역동적인 움직임을 보여주는 이미지는 주로 이미지 함수로 그려준다. 
+		
+		// 메인 스크린(인트로 화면에서 시작하기 버튼 누른 후 넘어가는 화면)이면 selectedImage와 titleImage 노출 
+		if (isMainScreen) { 
 			g.drawImage(selectedImage, 340, 100, null);
 			g.drawImage(titleImage, 340, 70, null);
 		}
-		paintComponents(g);
+		paintComponents(g); 
+		// painComponents : main frame에 추가된(★add된★) 요소를 보여줄 때 사용 
 		this.repaint();
 	}
 

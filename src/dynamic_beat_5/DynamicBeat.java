@@ -1,3 +1,4 @@
+// [ì‘ì—…ìš”ì•½] ì‹œì‘í™”ë©´ â†’ ë©”ì¸í™”ë©´ ë„˜ì–´ì˜¤ê²Œê¹Œì§€.  
 package dynamic_beat_5;
 
 import java.awt.Color;
@@ -116,7 +117,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// °ÔÀÓ ½ÃÀÛ ÀÌº¥Æ®
+				// ê²Œì„ ì‹œì‘ ì´ë²¤íŠ¸
 				startButton.setVisible(false);
 				quitButton.setVisible(false);
 				leftButton.setVisible(true);
@@ -185,7 +186,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿ŞÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì™¼ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 			}
 		});
 		add(leftButton);
@@ -214,7 +215,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿À¸¥ÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì˜¤ë¥¸ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 			}
 		});
 		add(rightButton);
