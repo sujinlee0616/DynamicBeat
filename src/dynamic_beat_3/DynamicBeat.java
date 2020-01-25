@@ -1,3 +1,4 @@
+// [작업 요약] 음악 삽입 
 package dynamic_beat_3;
 
 import java.awt.Graphics;

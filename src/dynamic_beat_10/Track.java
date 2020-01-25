@@ -1,13 +1,17 @@
+// Track : í•˜ë‚˜ì˜ ê³¡ì— ëŒ€í•œ ì •ë³´ë¥¼ ë‹´ëŠ” í´ëž˜ìŠ¤. 
+// ì¢€ ë” ê°ì²´ì§€í–¥ì ìœ¼ë¡œ ì§œê¸° ìœ„í•´ Track í´ëž˜ìŠ¤ë¥¼ ë§Œë“¤ì—ˆë‹¤. 
+
 package dynamic_beat_10;
 
 public class Track {
 
-	private String titleImage; // Á¦¸ñ ºÎºÐ ÀÌ¹ÌÁö 
-	private String startImage; // °ÔÀÓ ¼±ÅÃ Ã¢ ÀÌ¹ÌÁö
-	private String gameImage; // ÇØ´ç °îÀ» ½ÇÇàÇßÀ» ¶§ ÀÌ¹ÌÁö
-	private String startMusic; // °ÔÀÓ ¼±ÅÃ Ã¢ À½¾Ç
-	private String GameMusic; // ÇØ´ç °î ½ÇÇà ½ÃÀÇ À½¾Ç 
+	private String titleImage; // ì œëª©ë¶€ë¶„ ì´ë¯¸ì§€ 
+	private String startImage; // ê²Œìž„ ì„ íƒ ì°½ í‘œì§€ ì´ë¯¸ì§€ 
+	private String gameImage; // í•´ë‹¹ ê³¡ ì‹¤í–‰ ì‹œ í‘œì§€ ì´ë¯¸ì§€ 
+	private String startMusic; // ê²Œìž„ì„ íƒ ì°½ì—ì„œ ë‚˜ì˜¤ëŠ” 30ì´ˆì§œë¦¬ ìŒì•… 
+	private String GameMusic; // í•´ë‹¹ ê³¡ ì„ íƒí–ˆì„ ë•Œ (ê²Œìž„ì‹œìž‘ í›„) ë‚˜ì˜¤ëŠ” ë…¸ëž˜ 
 	
+	/// ìœ„ê¹Œì§€ ì½”ë”© í›„ ìš°í´ë¦­ > Source > Generate Getters and Setters 	
 	public String getTitleImage() {
 		return titleImage;
 	}
@@ -46,8 +50,5 @@ public class Track {
 		this.gameImage = gameImage;
 		this.startMusic = startMusic;
 		GameMusic = gameMusic;
-	}
-	
-	
-	
+	}	
 }

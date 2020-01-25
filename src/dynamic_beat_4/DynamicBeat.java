@@ -1,3 +1,4 @@
+// [작업 요약] 커스텀(디자인된) menuBar 생성 
 package dynamic_beat_4;
 
 import java.awt.Color;

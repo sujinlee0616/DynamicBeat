@@ -1,3 +1,4 @@
+// [작업 요약] 곡 선택 기능 추가 
 package dynamic_beat_7;
 
 import java.awt.Color;
@@ -46,13 +47,16 @@ public class DynamicBeat extends JFrame {
 
 	private boolean isMainScreen = false;
 
+	// ArrayList : 어떠한 변수들을 담을 수 있는, 하나의 이미 만들어진 배열
 	ArrayList<Track> trackList = new ArrayList<Track>();
 	
+	// 곡 선택 관련 변수 
 	private Image titleImage;
+	// 선택한 곡의 이미지/음악  ==> selectTrack 메서드(함수) 통해서 컨트롤 하겠음. ==> 코드의 함수화. 
 	private Image selectedImage;
 	private Music selectedMusic;
 	
-	private int	nowSelected = 0; // ���� ���õ� Ʈ���� ���ȣ 
+	private int	nowSelected = 0; // 현재 선택된 트랙의 번호  
 	
 	public DynamicBeat() {
 		setUndecorated(true);
@@ -65,9 +69,11 @@ public class DynamicBeat extends JFrame {
 		setBackground(new Color(0, 0, 0, 0));
 		setLayout(null);
 		
+		// 게임 켜면 introMusic 바로 나오게 
 		Music introMusic = new Music("introMusic.mp3", true);
 		introMusic.start();
 		
+		// <곡 리스트> - trackList에 add ==> 각각의 곡들이 순서대로 ArrayList에 담긴다. 
 		trackList.add(new Track("Mighty Love Title Image.png", 
 				"Mighty Love Start Image.png", "Mighty Love Game Image.png", 
 				"Mighty Love Selected.mp3", "Joakim Karud - Mighty Love.mp3"));
@@ -136,13 +142,16 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// 시작 버튼 이벤트 
-				introMusic.close();
-				selectTrack(0);
-				startButton.setVisible(false);
+				// <시작 버튼 이벤트> - 인트로 화면 → 메인화면  
+				introMusic.close(); // intro 음악 중지 
+				selectTrack(0); // track을 0으로 설정 ==> 맨 첫 곡 실행되게끔. 
+				// 인트로 화면에 있던 start/quit 버튼 안 보이게 만들고 
+				startButton.setVisible(false); 
 				quitButton.setVisible(false);
+				// 메인 화면에서 좌/우 이동 버튼 보이게 
 				leftButton.setVisible(true);
 				rightButton.setVisible(true);
+				// 메인화면 배경 이미지로 변경하고 isMain을 true로 변경 
 				background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
 				isMainScreen = true;
 			}
@@ -209,7 +218,7 @@ public class DynamicBeat extends JFrame {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
 				// 왼쪽 버튼 이벤트 
-				selectLeft();
+				selectLeft(); // selectLeft 함수(메서드) 실행 ==> 객체지향
 			}
 		});
 		add(leftButton);
@@ -240,7 +249,7 @@ public class DynamicBeat extends JFrame {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
 				// 오른쪽 버튼 이벤트 
-				selectRight();
+				selectRight(); //selectRight 메서드(함수) 실행 ==> 객체지향 
 			}
 		});
 		add(rightButton);
@@ -283,38 +292,39 @@ public class DynamicBeat extends JFrame {
 		this.repaint();
 	}
 	
-	// �� ���� 
+	// 
+	// 위에서 정의한 selectedImage와 selectedMusic을 컨트롤 
 	public void selectTrack(int nowSelected) {
 		if(selectedMusic != null)
-			selectedMusic.close();
+			selectedMusic.close(); // 이미 어떤 곡이 실행되고 있었다면 실행되고 있던 곡을 종료시킴 
+		// 선택한 곡 번호를 받아서 그 곡의 정보를 trackList라는 ArrayList에서 받아온다.
+		// trackList는 Track 클래스 파일에서 알 수 있듯이 titleImage, startImage, gameImage, startMusic, gameMusic를 가지고 있음. 
 		titleImage = new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getTitleImage()))
-				.getImage();
+				.getImage(); // 타이틀 이미지를 선택한 곡 껄로 변경  
 		selectedImage = new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getStartImage()))
-				.getImage();
-		selectedMusic = new Music(trackList.get(nowSelected).getStartMusic(),true);
-		selectedMusic.start();
+				.getImage(); // 선택된 이미지 변경
+		selectedMusic = new Music(trackList.get(nowSelected).getStartMusic(),true); //true : 음악 무한반복 
+		selectedMusic.start();  // 선택한 음악 재생 
 	}
 	
-	// leftButton ���
+	// leftButton 클릭 시 이벤트 처리 
 	public void selectLeft() {
-		// ���� ���ʿ� �ִ� ��� leftButton ������ �� �����ʿ� �ִ� ������ ���Բ� ó�� 
+		// 0번째 곡일때 왼쪽 버튼을 누르면 가장 마지막 곡이 나오도록.  
 		if(nowSelected == 0)
 			nowSelected = trackList.size() -1;
 		else 
 			nowSelected --;
 		selectTrack(nowSelected);
-
 	}
 	
-	// leftButton ���
+	// leftButton 클릭 시  이벤트 처리 
 		public void selectRight() {
-			// ���� ���ʿ� �ִ� ��� leftButton ������ �� �����ʿ� �ִ� ������ ���Բ� ó�� 
+			// 제일 마지막 곡일 때 오른쪽 버튼을 누르면 가장 첫번째 곡이 나오도록. 
 			if(nowSelected == trackList.size()-1)
 				nowSelected = 0;
 			else 
 				nowSelected ++;
 			selectTrack(nowSelected);
-
 		}
 
 }
