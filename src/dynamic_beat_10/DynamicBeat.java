@@ -1,3 +1,4 @@
+// [ì‘ì—…ìš”ì•½] ê²Œì„í™”ë©´ ë””ìì¸ 
 package dynamic_beat_10;
 
 import java.awt.Color;
@@ -71,7 +72,7 @@ public class DynamicBeat extends JFrame {
 	private Image selectedImage;
 	private Music selectedMusic;
 	private Music introMusic = new Music("introMusic.mp3", true);
-	private int	nowSelected = 0; // ÇöÀç ¼±ÅÃµÈ Æ®·¢ÀÇ °î¹øÈ£ 
+	private int	nowSelected = 0;
 	
 	public DynamicBeat() {
 		setUndecorated(true);
@@ -154,8 +155,8 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// °ÔÀÓ ½ÃÀÛ ÀÌº¥Æ®
-				enterMain();
+				// ì‹œì‘ë²„íŠ¼ ì´ë²¤íŠ¸ 
+				enterMain(); // ì‹œì‘ë²„íŠ¼ í´ë¦­ ì‹œ enterMain í•¨ìˆ˜(ë©”ì„œë“œ) ì‹¤í–‰ 
 
 			}
 		});
@@ -220,7 +221,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿ŞÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì™¼ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				selectLeft();
 			}
 		});
@@ -251,7 +252,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿À¸¥ÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì˜¤ë¥¸ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				selectRight();
 			}
 		});
@@ -282,7 +283,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ³­ÀÌµµ ½¬¿ò ÀÌº¥Æ®
+				// easy ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				gameStart(nowSelected, "easy");
 
 			}
@@ -314,7 +315,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ³­ÀÌµµ ¾î·Á¿ò ÀÌº¥Æ®
+				// hard ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				gameStart(nowSelected, "hard");
 
 			}
@@ -346,7 +347,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¸ŞÀÎ È­¸éÀ¸·Î µ¹¾Æ°¡´Â ÀÌº¥Æ® 
+				// ë°±ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				backMain();
 			}
 		});
@@ -376,7 +377,7 @@ public class DynamicBeat extends JFrame {
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
-		screenDraw((Graphics2D) screenGraphic);  // Antialiasing (±ÛÀÚ ¼±¸íÇÏ°Ô) À§ÇØ¼­ Graphics2D¸¦ import ÇßÀ½.  
+		screenDraw((Graphics2D) screenGraphic);  // Antialiasing ì²˜ë¦¬ - ê¸€ì ê¹¨ì§ ë°©ì§€. Graphics2D import í•´ì•¼í•¨.  
 		g.drawImage(screenImage, 0, 0, null);
 	}
 
@@ -387,6 +388,7 @@ public class DynamicBeat extends JFrame {
 			g.drawImage(titleImage, 340, 110, null);
 		}
 		if(isGameScreen) {
+			// note ê²½ë¡œ ì´ë¯¸ì§€
 			g.drawImage(noteRouteImage, 228, 30, null);
 			g.drawImage(noteRouteImage, 332, 30, null);
 			g.drawImage(noteRouteImage, 436, 30, null);
@@ -395,6 +397,7 @@ public class DynamicBeat extends JFrame {
 			g.drawImage(noteRouteImage, 744, 30, null);
 			g.drawImage(noteRouteImage, 848, 30, null);
 			g.drawImage(noteRouteImage, 952, 30, null);
+			// note ê²½ë¡œ êµ¬ë¶„ì„  ì´ë¯¸ì§€ 
 			g.drawImage(noteRouteLineImage, 224, 30, null);
 			g.drawImage(noteRouteLineImage, 328, 30, null);
 			g.drawImage(noteRouteLineImage, 432, 30, null);
@@ -402,9 +405,11 @@ public class DynamicBeat extends JFrame {
 			g.drawImage(noteRouteLineImage, 740, 30, null);
 			g.drawImage(noteRouteLineImage, 844, 30, null);
 			g.drawImage(noteRouteLineImage, 948, 30, null);
+			// ê²Œì„ì •ë³´ ë° íŒì •ì„  ì´ë¯¸ì§€
 			g.drawImage(noteRouteLineImage, 1052, 30, null);
-			g.drawImage(gameInfoImage, 0, 660, null);
-			g.drawImage(judgementLineImage, 0, 580, null);
+			g.drawImage(gameInfoImage, 0, 660, null); // ê²Œì„ ì •ë³´ ì´ë¯¸ì§€ - ê°€ìˆ˜, ê³¡ëª…, ì ìˆ˜ ë“±ì´ ë‚˜ì˜¤ëŠ” ë°˜íˆ¬ëª… ê²€ì •ìƒ‰ ì˜ì—­ 
+			g.drawImage(judgementLineImage, 0, 580, null); // íŒì •ì„ (ë¹¨ê°„ìƒ‰) ì´ë¯¸ì§€ 
+			// note ì´ë¯¸ì§€
 			g.drawImage(noteBasicImage, 228, 120, null);
 			g.drawImage(noteBasicImage, 332, 580, null);
 			g.drawImage(noteBasicImage, 436, 500, null);
@@ -412,26 +417,27 @@ public class DynamicBeat extends JFrame {
 			g.drawImage(noteBasicImage, 640, 340, null);
 			g.drawImage(noteBasicImage, 744, 325, null);
 			g.drawImage(noteBasicImage, 848, 305, null);
-			g.drawImage(noteBasicImage, 952, 305, null);  // ³ªÁß¿¡ ±×¸±¼ö·Ï ·¹ÀÌ¾î°¡ ´õ À§¿¡ ¿Ã¶ó¿È 
+			g.drawImage(noteBasicImage, 952, 305, null);  
 			g.setColor(Color.white);
+			// Antialiasing - ê¸€ì ì•ˆ ê¹¨ì§€ê²Œ. 
 			g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-			// ÇöÀç °î¸í Ãâ·Â 
+			// ê³¡ì •ë³´ - 1) ê³¡ ì œëª© 
 			g.setColor(Color.WHITE);
 			g.setFont(new Font("Arial", Font.BOLD, 30));
-			g.drawString("Joakim Karud - Mighty Love", 20, 702); 
-			// ÇöÀç ³­ÀÌµµ Ãâ·Â
+			g.drawString("Joakim Karud - Mighty Love", 20, 702); // í˜„ì¬ ê³¡ ì¶œë ¥ (ì„ì‹œë¡œ í•˜ë‚˜ ì§€ì •í•´ë†¨ìŒ)
+			// ê³¡ì •ë³´ - 3) ë‚œì´ë„ 
 			g.drawString("Easy", 1190, 702);
-			// °ÔÀÓ Å° ¼³¸í Ãâ·Â 
+			// ê°ê°ì˜ noteê°€ í‚¤ë³´ë“œì—ì„œ ì–´ë–¤ í‚¤ì¸ì§€ ì•Œë ¤ì£¼ëŠ” ë¬¸êµ¬  
 			g.setFont(new Font("Arial", Font.PLAIN, 26));
 			g.setColor(Color.DARK_GRAY);
 			g.drawString("S", 270, 609);
 			g.drawString("D", 374, 609);
-			g.drawString("F", 478, 609);
+			g.drawString("F", 478, 609); 
 			g.drawString("Spcae Bar", 580, 609);
 			g.drawString("J", 784, 609);
 			g.drawString("K", 889, 609);
 			g.drawString("L", 993, 609);
-			// Á¡¼ö Ãâ·Â 
+			// ê³¡ì •ë³´ - 2) ì ìˆ˜ 
 			g.setColor(Color.LIGHT_GRAY);
 			g.setFont(new Font("Elephant", Font.BOLD, 30));
 			g.drawString("000000", 565, 702);
@@ -440,9 +446,9 @@ public class DynamicBeat extends JFrame {
 		this.repaint();
 	}
 	
-	// °î ¼³Á¤ 
+	// <ê³¡ ì„ íƒ í•¨ìˆ˜>
 	public void selectTrack(int nowSelected) {
-		if(selectedMusic != null) // ÀÌ¹Ì ½ÇÇàµÇ°í ÀÖ´ø °îÀÌ ÀÖ´Ù¸é ÁßÁö½ÃÄÑ¶ó 
+		if(selectedMusic != null) // ì´ë¯¸ ì–´ë–¤ ê³¡ì´ ì‹¤í–‰ë˜ê³  ìˆì—ˆë‹¤ë©´ ì‹¤í–‰ë˜ê³  ìˆë˜ ê³¡ì„ ì¢…ë£Œì‹œí‚´
 			selectedMusic.close();
 		titleImage = new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getTitleImage()))
 				.getImage();
@@ -452,9 +458,9 @@ public class DynamicBeat extends JFrame {
 		selectedMusic.start();
 	}
 	
-	// leftButton ±â´É
+	// <leftButton ì´ë²¤íŠ¸ ì²˜ë¦¬ í•¨ìˆ˜>
 	public void selectLeft() {
-		// °¡Àå ¿ŞÂÊ¿¡ ÀÖ´Â °î¿¡¼­ leftButton ´©¸£¸é ¸Ç ¿À¸¥ÂÊ¿¡ ÀÖ´Â °îÀ¸·Î °¡°Ô²û Ã³¸® 
+		// 0ë²ˆì§¸ ê³¡ì¼ë•Œ ì™¼ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ê°€ì¥ ë§ˆì§€ë§‰ ê³¡ì´ ë‚˜ì˜¤ë„ë¡. 
 		if(nowSelected == 0)
 			nowSelected = trackList.size() -1;
 		else 
@@ -463,9 +469,9 @@ public class DynamicBeat extends JFrame {
 
 	}
 	
-	// leftButton ±â´É
+	// <rightButton ì´ë²¤íŠ¸ ì²˜ë¦¬ í•¨ìˆ˜>
 	public void selectRight() {
-		// °¡Àå ¿ŞÂÊ¿¡ ÀÖ´Â °î¿¡¼­ leftButton ´©¸£¸é ¸Ç ¿À¸¥ÂÊ¿¡ ÀÖ´Â °îÀ¸·Î °¡°Ô²û Ã³¸®
+		// ì œì¼ ë§ˆì§€ë§‰ ê³¡ì¼ ë•Œ ì˜¤ë¥¸ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ê°€ì¥ ì²«ë²ˆì§¸ ê³¡ì´ ë‚˜ì˜¤ë„ë¡. 
 		if (nowSelected == trackList.size() - 1)
 			nowSelected = 0;
 		else
@@ -474,36 +480,48 @@ public class DynamicBeat extends JFrame {
 
 	}
 
+	// <ê²Œì„ì‹œì‘ í•¨ìˆ˜> 
 	public void gameStart(int nowSelected, String difficulty) {
-		if(selectedMusic != null) // ÀÌ¹Ì ½ÇÇàµÇ°í ÀÖ´ø °îÀÌ ÀÖ´Ù¸é ÁßÁö½ÃÄÑ¶ó 
+		if(selectedMusic != null) // ì´ë¯¸ ì–´ë–¤ ìŒì•…ì´ ì‹¤í–‰ì¤‘ì´ë¼ë©´ ê·¸ ìŒì•… ì¤‘ì§€ì‹œí‚´
 			selectedMusic.close();
-		isMainScreen=false; // ==> screenDraw¿¡¼­ selectedImage, titleImage ½ÇÇà ¾ÈµÊ 
+		isMainScreen=false; // ë©”ì¸í™”ë©´ì´ ì•„ë‹ˆë¼ê³  ì•Œë ¤ì¤Œ ==> screenDrawì—ì„œ if (isMainScreen) ì‹¤í–‰ë˜ì§€ ì•Šë„ë¡ í•´ì¤Œ. 
+		// ê²Œì„í™”ë©´ìœ¼ë¡œ ë„˜ì–´ê°€ë©´ì„œ ë©”ì¸í™”ë©´ì— ìˆë˜ ë²„íŠ¼ë“¤ ìˆ¨ê¹€ 
 		leftButton.setVisible(false);
 		rightButton.setVisible(false);
 		easyButton.setVisible(false);
 		hardButton.setVisible(false);
+		// ê²Œì„í™”ë©´ìœ¼ë¡œ ë„˜ì–´ê°”ìœ¼ë‹ˆ ë°°ê²½ ì´ë¯¸ì§€ ë°”ê¿”ì¤Œ 
 		background = new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getGameImage())).getImage();
 		backButton.setVisible(true);
 		isGameScreen = true;
 	}
 	
+	// <ë©”ì¸ìœ¼ë¡œ ëŒì•„ê°€ëŠ” í•¨ìˆ˜>
 	public void backMain(){
 		isMainScreen = true;
+		// ë²„íŠ¼ ì²˜ë¦¬ - ë©”ì¸í™”ë©´ì— ë‚˜ì˜¤ëŠ” ë²„íŠ¼ë“¤ ë…¸ì¶œì‹œí‚´ 
 		leftButton.setVisible(true);
 		rightButton.setVisible(true);
 		easyButton.setVisible(true);
 		hardButton.setVisible(true);
+		// ë°°ê²½ ì²˜ë¦¬ 
 		background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
+		// ë²„íŠ¼ ì²˜ë¦¬ - ê²Œì„í™”ë©´ì— ë‚˜ì˜¤ëŠ” ë²„íŠ¼ ìˆ¨ê¹€ 
 		backButton.setVisible(false);
 		selectTrack(nowSelected);
 		isGameScreen = false;
 	}
 	
+	// <ì‹œì‘ë²„íŠ¼ ì´ë²¤íŠ¸ ì²˜ë¦¬ í•¨ìˆ˜> 
+	// : introí™”ë©´ â†’ ë©”ì¸ í™”ë©´ 
 	public void enterMain() {
+		// ë²„íŠ¼ ì²˜ë¦¬ - ì¸íŠ¸ë¡œ í™”ë©´ì— ìˆë˜ ë²„íŠ¼ë“¤ ìˆ¨ê¹€ 
 		startButton.setVisible(false);
 		quitButton.setVisible(false);
+		// ë°°ê²½ ì´ë¯¸ì§€ ë³€ê²½ 
 		background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
 		isMainScreen = true;
+		// ë²„íŠ¼ ì²˜ë¦¬ - ë©”ì¸í™”ë©´ì— ë‚˜ì˜¤ëŠ” ë²„íŠ¼ë“¤ ë…¸ì¶œì‹œí‚´
 		leftButton.setVisible(true);
 		rightButton.setVisible(true);
 		easyButton.setVisible(true);

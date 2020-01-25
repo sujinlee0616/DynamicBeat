@@ -2,12 +2,12 @@ package dynamic_beat_16;
 
 public class Track {
 
-	private String titleImage; // Á¦¸ñ ºÎºĞ ÀÌ¹ÌÁö 
-	private String startImage; // °ÔÀÓ ¼±ÅÃ Ã¢ ÀÌ¹ÌÁö
-	private String gameImage; // ÇØ´ç °îÀ» ½ÇÇàÇßÀ» ¶§ ÀÌ¹ÌÁö
-	private String startMusic; // °ÔÀÓ ¼±ÅÃ Ã¢ À½¾Ç
-	private String gameMusic; // ÇØ´ç °î ½ÇÇà ½ÃÀÇ À½¾Ç 
-	private String titleName; // °î Á¦¸ñ 
+	private String titleImage; // ì œëª©ë¶€ë¶„ ì´ë¯¸ì§€ 
+	private String startImage; // ê²Œì„ ì„ íƒ ì°½ í‘œì§€ ì´ë¯¸ì§€ 
+	private String gameImage; // í•´ë‹¹ ê³¡ ì‹¤í–‰ ì‹œ í‘œì§€ ì´ë¯¸ì§€ 
+	private String startMusic; // ê²Œì„ì„ íƒ ì°½ì—ì„œ ë‚˜ì˜¤ëŠ” 30ì´ˆì§œë¦¬ ìŒì•… 
+	private String gameMusic; // í•´ë‹¹ ê³¡ ì„ íƒí–ˆì„ ë•Œ (ê²Œì„ì‹œì‘ í›„) ë‚˜ì˜¤ëŠ” ë…¸ë˜ 
+	private String titleName; // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	
 	public String getTitleImage() {
 		return titleImage;
