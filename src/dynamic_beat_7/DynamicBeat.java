@@ -50,13 +50,13 @@ public class DynamicBeat extends JFrame {
 	// ArrayList : 어떠한 변수들을 담을 수 있는, 하나의 이미 만들어진 배열
 	ArrayList<Track> trackList = new ArrayList<Track>();
 	
-	// 곡 선택 관련 변수 
+	// <곡 선택 관련 변수> 
 	private Image titleImage;
-	// 선택한 곡의 이미지/음악  ==> selectTrack 메서드(함수) 통해서 컨트롤 하겠음. ==> 코드의 함수화. 
 	private Image selectedImage;
 	private Music selectedMusic;
+	// 선택한 곡의 이미지/음악  ==> selectTrack 메서드(함수) 통해서 컨트롤 하겠음. ==> 코드의 함수화. 
 	
-	private int	nowSelected = 0; // 현재 선택된 트랙의 번호  
+	private int	nowSelected = 0; // nowSelected: 현재 선택된 트랙의 번호  
 	
 	public DynamicBeat() {
 		setUndecorated(true);
@@ -73,7 +73,8 @@ public class DynamicBeat extends JFrame {
 		Music introMusic = new Music("introMusic.mp3", true);
 		introMusic.start();
 		
-		// <곡 리스트> - trackList에 add ==> 각각의 곡들이 순서대로 ArrayList에 담긴다. 
+		// <곡 리스트> 
+		// : trackList에 add ==> 각각의 곡들이 순서대로 ArrayList에 담긴다. 
 		trackList.add(new Track("Mighty Love Title Image.png", 
 				"Mighty Love Start Image.png", "Mighty Love Game Image.png", 
 				"Mighty Love Selected.mp3", "Joakim Karud - Mighty Love.mp3"));
@@ -292,8 +293,8 @@ public class DynamicBeat extends JFrame {
 		this.repaint();
 	}
 	
-	// 
-	// 위에서 정의한 selectedImage와 selectedMusic을 컨트롤 
+	// <곡 선택 함수>
+	// : 위에서 정의한 selectedImage와 selectedMusic을 컨트롤 
 	public void selectTrack(int nowSelected) {
 		if(selectedMusic != null)
 			selectedMusic.close(); // 이미 어떤 곡이 실행되고 있었다면 실행되고 있던 곡을 종료시킴 
@@ -307,7 +308,7 @@ public class DynamicBeat extends JFrame {
 		selectedMusic.start();  // 선택한 음악 재생 
 	}
 	
-	// leftButton 클릭 시 이벤트 처리 
+	// <leftButton 이벤트 처리 함수>
 	public void selectLeft() {
 		// 0번째 곡일때 왼쪽 버튼을 누르면 가장 마지막 곡이 나오도록.  
 		if(nowSelected == 0)
@@ -317,7 +318,7 @@ public class DynamicBeat extends JFrame {
 		selectTrack(nowSelected);
 	}
 	
-	// leftButton 클릭 시  이벤트 처리 
+	// <rightButton 이벤트 처리 함수>
 		public void selectRight() {
 			// 제일 마지막 곡일 때 오른쪽 버튼을 누르면 가장 첫번째 곡이 나오도록. 
 			if(nowSelected == trackList.size()-1)
