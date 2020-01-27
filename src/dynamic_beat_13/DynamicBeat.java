@@ -1,4 +1,4 @@
-// [작업요약] 
+// [작업요약] note 떨어뜨리는 애니메이션 구현  
 package dynamic_beat_13;
 
 import java.awt.Color;
@@ -73,7 +73,6 @@ public class DynamicBeat extends JFrame {
 	// 하나의 게임은, 게임 프로그램 하나가 실행됐을 때, 단 하나의 게임만 진행 가능
 	// 즉, 동시에 여러곡을 재생시키면서 게임할 순 없음. 
 	// 즉, game이라는 변수는 게임 프로젝트 내에서 통용되는 하나의 변수이므로 public static 붙여주었음. 
-	
 	
 	public DynamicBeat() {
 		setUndecorated(true); 

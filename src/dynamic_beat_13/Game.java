@@ -1,3 +1,4 @@
+// Game í´ë˜ìŠ¤ : Game í´ë˜ìŠ¤ì—ì„œ ë§Œë“¤ì–´ì§„ instance ë³€ìˆ˜ë¥¼ ì´ìš©í•´ì„œ ê²Œì„ì„ ì»¨íŠ¸ë¡¤. 
 package dynamic_beat_13;
 
 import java.awt.Color;
@@ -9,7 +10,9 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 
-public class Game extends Thread {
+public class Game extends Thread {//Override 
+	// Thread : í•˜ë‚˜ì˜ í”„ë¡œê·¸ë¨ ì•ˆì—ì„œ ì‹¤í–‰ë˜ëŠ” ì‘ì€ í”„ë¡œê·¸ë¨.
+	// ì¦‰, ì „ë°˜ì ì¸ ê²Œì„ í‹€ ì•ˆì—ì„œ í•˜ë‚˜ì˜ ê²Œì„ì´ í•˜ë‚˜ì˜ ë‹¨ìœ„ë¡œì¨ ë™ì‘ ==> Thread ì´ìš© 
 	private Image noteRouteLineImage = new ImageIcon(Main.class.getResource("../images/noteRouteLine.png")).getImage();
 	private Image judgementLineImage = new ImageIcon(Main.class.getResource("../images/judgementLine.png")).getImage();
 	private Image gameInfoImage = new ImageIcon(Main.class.getResource("../images/gameInfo.png")).getImage();
@@ -30,6 +33,7 @@ public class Game extends Thread {
 	
 	ArrayList<Note> noteList = new ArrayList<Note>();
 	
+	// ìƒì„±ì - ì´ˆê¸°í™” 
 	public Game(String titleName, String difficulty, String musicTitle) {
 		this.titleName = titleName;
 		this.difficulty = difficulty;
@@ -39,7 +43,9 @@ public class Game extends Thread {
 		dropNotes(titleName);
 	}
 	
+	// ê²Œì„ í™”ë©´ì—ì„œ ê·¸ë ¤ì¤˜ì•¼ í•˜ëŠ” ìš”ì†Œë“¤ 
 	public void screenDraw(Graphics2D g) {
+		// 1. note ê²½ë¡œ ì´ë¯¸ì§€
 		g.drawImage(noteRouteSImage, 228, 30, null);
 		g.drawImage(noteRouteDImage, 332, 30, null);
 		g.drawImage(noteRouteFImage, 436, 30, null);
@@ -48,6 +54,7 @@ public class Game extends Thread {
 		g.drawImage(noteRouteJImage, 744, 30, null);
 		g.drawImage(noteRouteKImage, 848, 30, null);
 		g.drawImage(noteRouteLImage, 952, 30, null);
+		// 2. note ê²½ë¡œ êµ¬ë¶„ì„  ì´ë¯¸ì§€ 
 		g.drawImage(noteRouteLineImage, 224, 30, null);
 		g.drawImage(noteRouteLineImage, 328, 30, null);
 		g.drawImage(noteRouteLineImage, 432, 30, null);
@@ -56,22 +63,26 @@ public class Game extends Thread {
 		g.drawImage(noteRouteLineImage, 844, 30, null);
 		g.drawImage(noteRouteLineImage, 948, 30, null);
 		g.drawImage(noteRouteLineImage, 1052, 30, null);
-		g.drawImage(gameInfoImage, 0, 660, null);
-		g.drawImage(judgementLineImage, 0, 580, null); 
-		for(int i=0; i<noteList.size(); i++){ //³ëÆ®µéÀ» ±×·ÁÁØ´Ù    
-			// ³ªÁß¿¡ ±×¸±¼ö·Ï ·¹ÀÌ¾î°¡ ´õ À§¿¡ ¿Ã¶ó¿È ==> ÆÇÁ¤¶óÀÎº¸´Ù ³ëÆ®°¡ ´õ À§¿¡ ÀÖ¾î¾ß ÇÏ´Ï±î ³ëÆ®¸¦ ´õ µÚ¿¡¼­ ±×·ÁÁÜ 
+		// 3. ê²Œì„ì •ë³´ ë° 4. íŒì •ì„  ì´ë¯¸ì§€
+		g.drawImage(gameInfoImage, 0, 660, null); // ê²Œì„ ì •ë³´ ì´ë¯¸ì§€ - ê°€ìˆ˜, ê³¡ëª…, ì ìˆ˜ ë“±ì´ ë‚˜ì˜¤ëŠ” ë°˜íˆ¬ëª… ê²€ì •ìƒ‰ ì˜ì—­ 
+		g.drawImage(judgementLineImage, 0, 580, null); // íŒì •ì„ (ë¹¨ê°„ìƒ‰ ìœ„ì•„ë˜ ë‘ ì¤„) ì´ë¯¸ì§€
+		// 5. note ì´ë¯¸ì§€ - noteList(ArrayList)
+		for(int i=0; i<noteList.size(); i++){ 
 			Note note = noteList.get(i);
 			note.screenDraw(g);
+			// ë…¸íŠ¸ë“¤ì„ ê·¸ë ¤ì¤€ë‹¤    
+			// ë‚˜ì¤‘ì— ê·¸ë¦´ìˆ˜ë¡ ë ˆì´ì–´ê°€ ë” ìœ„ì— ì˜¬ë¼ì˜´ ==> íŒì •ë¼ì¸ë³´ë‹¤ ë…¸íŠ¸ê°€ ë” ìœ„ì— ìˆì–´ì•¼ í•˜ë‹ˆê¹Œ ë…¸íŠ¸ë¥¼ ë” ë’¤ì—ì„œ ê·¸ë ¤ì¤Œ 
 		}
 		g.setColor(Color.white);
+		// Antialiasing - ê¸€ì ì•ˆ ê¹¨ì§€ê²Œ.
 		g.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-		// ÇöÀç °î¸í Ãâ·Â 
+		// 7. ê³¡ì •ë³´ - 1) ê³¡ ì œëª© 
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Arial", Font.BOLD, 30));
 		g.drawString(titleName, 20, 702);
-		// ÇöÀç ³­ÀÌµµ Ãâ·Â
+		// 7. ê³¡ì •ë³´ - 3) ë‚œì´ë„ 
 		g.drawString(difficulty, 1190, 702);
-		// °ÔÀÓ Å° ¼³¸í Ãâ·Â 
+		// 6. ê°ê°ì˜ noteê°€ í‚¤ë³´ë“œì—ì„œ ì–´ë–¤ í‚¤ì¸ì§€ ì•Œë ¤ì£¼ëŠ” ë¬¸êµ¬  
 		g.setFont(new Font("Arial", Font.PLAIN, 26));
 		g.setColor(Color.DARK_GRAY);
 		g.drawString("S", 270, 609);
@@ -81,17 +92,18 @@ public class Game extends Thread {
 		g.drawString("J", 784, 609);
 		g.drawString("K", 889, 609);
 		g.drawString("L", 993, 609);
-		// Á¡¼ö Ãâ·Â 
+		// 7. ê³¡ì •ë³´ - 2) ì ìˆ˜ 
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Elephant", Font.BOLD, 30));
 		g.drawString("000000", 565, 702);
 	}
 	
-	public void pressS() { // S Å°¸¦ ´­·¶À» ¶§ noteRoute°¡ ³ë¶õ»ö ÀÌ¹ÌÁö°¡ µÇµµ·Ï 
+	public void pressS() {  // S í‚¤ ëˆŒë €ì„ ë•Œì˜ ì²˜ë¦¬ 
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
+		// íš¨ê³¼ìŒ ì‚½ì… 
 		new Music("drumSmall1.mp3",false).start();
 	}
-	public void releaseS() { // S Å°¸¦ ¶ÃÀ» ¶§ ¿ø·¡ noteRouteÀÌ¹ÌÁö·Î µ¹¾Æ°¡µµ·Ï 
+	public void releaseS() { // S í‚¤ ë—ì„ ë•Œì˜ ì²˜ë¦¬ 
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	}
 	
@@ -144,18 +156,20 @@ public class Game extends Thread {
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoute.png")).getImage();
 	}
 	
-	
+	// Game í´ë˜ìŠ¤ì—ì„œ ë§Œë“  instance ë³€ìˆ˜ëŠ” run ë©”ì†Œë“œ ì•ˆì— ìˆëŠ” ë‚´ìš©ì„ ì‹¤í–‰í•œë‹¤. 
 	@Override
 	public void run() {
 		
 	}
 	
-	public void close() { // °ÔÀÓ Á¾·á 
+	// <Game ì“°ë ˆë“œ ì¢…ë£Œ í•¨ìˆ˜> 
+	public void close() {
 		gameMusic.close();
 		this.interrupt();
 	}
 	
-	public void dropNotes(String titleName) { //³ëÆ®¸¦ ¶³¾î¶ß¸®´Â ÇÔ¼ö 
+	// <note ë–¨ì–´ëœ¨ë¦¬ëŠ” í•¨ìˆ˜>
+	public void dropNotes(String titleName) { 
 		Note note = new Note(228, "short");
 		note.start();
 		noteList.add(note);

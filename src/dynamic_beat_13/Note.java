@@ -5,38 +5,52 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-public class Note extends Thread { // ½º·¹µå·Î ¸¸µå´Â ÀÌÀ¯? °¢°¢ÀÇ ³ëÆ® ¶ÇÇÑ ÇÏ³ªÀÇ ºÎºĞÀûÀÎ ±â´ÉÀ¸·Î½á, ¶³¾îÁö´Â ¿ªÇÒÀ» ¼öÇàÇØ¾ß ÇÏ¹Ç·Î  
+public class Note extends Thread { // ê°ê°ì˜ note ë˜í•œ í•˜ë‚˜ì˜ ë¶€ë¶„ì ì¸ ê¸°ëŠ¥ìœ¼ë¡œì¨ ë–¨ì–´ì§€ëŠ” ì—­í• ì„ ìˆ˜í–‰í•´ì•¼ í•˜ë¯€ë¡œ Threadë¡œ ë§Œë“ ë‹¤. 
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
-	private int x,y = 580 - 1000 / Main.SLEEP_TIME * Main.NOTE_SPEED; // ³ëÆ®°¡ »ı¼ºµÇ°í 1ÃÊ µÚ¿¡ ÆÇÁ¤¶óÀÎ(y=580)¿¡ µµÂøÇÏµµ·Ï
+	private int x;
+	private int y = 580 - 1000 / Main.SLEEP_TIME * Main.NOTE_SPEED; 
+	// noteê°€ ë§Œë“¤ì–´ì§„ ì§€ 1ì´ˆ í›„ì— íŒì •ë¼ì¸ì— ë‹¿ë„ë¡. 
+	// note speed=7, slee_time=10ms ==> noteëŠ” 10msì— 7pxë§Œí¼ ì´ë™ ==> noteëŠ” 1ì´ˆì— 700pxë§Œí¼ ì´ë™ 
+	// (ë³€ìˆ˜ëª…ì„ note_speedë¼ê³  ì£¼ëŠ”ê²Œ ë¶€ì ì ˆ í•œ ê²ƒ ê°™ì€ë°...)
+	// noteê°€ ë§Œë“¤ì–´ì§„ ì§€ 1ì´ˆ í›„ì— íŒì •ë¼ì¸ì— ë‹¿ê²Œ í•˜ë ¤ë©´ íŒì •ë¼ì¸(y=580)ì—ì„œ 1ì´ˆì— ì´ë™í•˜ëŠ” ê±°ë¦¬ 700pxì„ ë¹¼ì„œ y=-120ì—ì„œ ì²˜ìŒ ìƒì„±ë˜ê²Œ í•˜ì. 
+	// ==> int y = 580 - 1000/10*7 = -120 
+	
 	private String noteType;
 	
-	public Note(int x, String noteType) { //»ı¼ºµÉ ¶§ y´Â °íÁ¤ÀÌ¹Ç·Î »ı¼ºÀÚ ¸¸µé¾îÁÙ ÇÊ¿ä X
-		this.x = x;
+	// <ìƒì„±ì> - ë³€ìˆ˜ ì´ˆê¸°í™” 
+	public Note(int x, String noteType) { 
+		this.x = x; // x : noteê°€ ë§Œë“¤ì–´ì§ˆ ìœ„ì¹˜  
+		// ìƒì„±ë  ë•Œ yëŠ” ê³ ì •ì´ë¯€ë¡œ ìƒì„±ì ë§Œë“¤ì–´ì¤„ í•„ìš” X
 		this.noteType = noteType;
 	}
 	
+	// <note ì´ë¯¸ì§€ ê·¸ë¦¬ëŠ” í•¨ìˆ˜> 
 	public void screenDraw(Graphics2D g) {
 		if(noteType.equals("short")) {
 			g.drawImage(noteBasicImage, x, y, null);
-		}else if(noteType.equals("long")) {
+		}
+		else if(noteType.equals("long")) {
 			g.drawImage(noteBasicImage, x, y, null);
 			g.drawImage(noteBasicImage, x+100, y, null);
 		}
 	}
 	
-	public void drop(){ //³ëÆ®°¡ ¶³¾îÁö´Â ÇÔ¼ö 
+	// <note ë–¨ì–´ëœ¨ë¦¬ëŠ” í•¨ìˆ˜>
+	public void drop(){
 		y += Main.NOTE_SPEED;
 	}
 	
+	// <ìŠ¤ë ˆë“œ ì‹¤í–‰ í•¨ìˆ˜>
 	@Override
-	public void run() { //½º·¹µå°¡ ½ÇÇàµÇ´Â ÇÔ¼ö 
+	public void run() { 
 		try {
-			while(true) { //¹«ÇÑÁ¤ ¹İº¹ÇØ¼­ ³ëÆ® ¶³¾î¶ß¸®µµ·Ï 
+			while(true) { // ë¬´í•œ ë°˜ë³µí•´ì„œ note ë–¨ì–´ëœ¨ë¦¼ 
 				drop();
 				Thread.sleep(Main.SLEEP_TIME); 
-				// ÇÑ ¹ø note¸¦ ¶³¾î¶ß¸®°í 0.01ÃÊ¸¸Å­ ½¬°í ±× ´ÙÀ½ ³ëÆ® ¶³¾î¶ß¸°´Ù. 
-				// sleepÀº 0.001ÃÊ¸¦ ±âÁØÀ¸·Î ÇÔ ==> ¿ì¸®´Â final SLEEP_TIMEÀ» 10, NOTE_SPEED=7·Î ÁáÀ½  
-				// ==> 0.01ÃÊ¿¡ 7 ¸¸Å­ ³»·Á¿È ==> ³ëÆ®´Â 1ÃÊ¿¡ 700 pixel ¸¸Å­ ¾Æ·¡·Î ³»·Á¿À°ÔµÊ
+				// í•œ ë²ˆ noteë¥¼ ë–¨ì–´ëœ¨ë¦¬ê³  SLEEP_TIMEë§Œí¼ ì‰¬ê³  ê·¸ ë‹¤ìŒ ë…¸íŠ¸ ë–¨ì–´ëœ¨ë¦°ë‹¤. 
+				// sleepì€ ms(0.001ì´ˆ)ë¥¼ ê¸°ì¤€ìœ¼ë¡œ í•¨ 
+				// ex) ë§Œì•½ SLEEP_TIMEì„ 10, NOTE_SPEED=7ë¡œ ì¤€ë‹¤ë©´ 
+				// ==> 0.01ì´ˆì— 7px ë§Œí¼ ë‚´ë ¤ì˜´ ==> noteëŠ” 1ì´ˆì— 700px ë§Œí¼ ì•„ë˜ë¡œ ë‚´ë ¤ì˜¤ê²Œë¨
 			}
 		}catch(Exception e) {
 			System.err.println(e.getMessage());
