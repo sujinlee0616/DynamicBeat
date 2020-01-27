@@ -1,3 +1,4 @@
+// KeyListener 클래스 : 사용자가 입력한 키를 감지하여 이벤트를 발생시키는 클래스. 
 package dynamic_beat_12;
 
 import java.awt.event.KeyAdapter;
@@ -5,10 +6,13 @@ import java.awt.event.KeyEvent;
 
 public class KeyListener extends KeyAdapter {
 	@Override 
-	public void keyPressed(KeyEvent e) { // Ű�� ������ ��쿡 ���� �̺�Ʈ ó�� 
+	public void keyPressed(KeyEvent e) { // key를 눌렀을 때의 이벤트 처리 
 		if(DynamicBeat.game == null) {
 			return;
+			// 현재 게임이 진행되고 있지 않다면 return을 넣어줘서 아래의 if문들을 수행하지 않도록 함 
+			//==> 키보드 입력하더라도 어떠한 변화도 일어나지 않도록 키보드 입력을 무력화시킴.  
 		}		
+		// 키보드 입력 처리 (게임진행 O일 때) 
 		if(e.getKeyCode() == KeyEvent.VK_S) {
 			DynamicBeat.game.pressS();
 		}
@@ -34,7 +38,7 @@ public class KeyListener extends KeyAdapter {
 	}
 	
 	@Override
-	public void keyReleased(KeyEvent e) { // Ű�� ���� ��쿡 ���� �̺�Ʈ ó�� 
+	public void keyReleased(KeyEvent e) { // key를 눌렀다가 뗄 때의 이벤트 처리 
 		if(DynamicBeat.game == null) {
 			return;
 		}

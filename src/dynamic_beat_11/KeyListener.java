@@ -13,7 +13,7 @@ public class KeyListener extends KeyAdapter {
 			// 현재 게임이 진행되고 있지 않다면 return을 넣어줘서 아래의 if문들을 수행하지 않도록 함 
 			//==> 키보드 입력하더라도 어떠한 변화도 일어나지 않도록 키보드 입력을 무력화시킴.  
 		}		
-		// 키보드 입력 처리 (게임진행 O일 떄) 
+		// 키보드 입력 처리 (게임진행 O일 때) 
 		if(e.getKeyCode() == KeyEvent.VK_S) {
 			DynamicBeat.game.pressS();
 		}

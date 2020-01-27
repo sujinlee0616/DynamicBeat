@@ -1,3 +1,5 @@
+// Track : 하나의 곡에 대한 정보를 담는 클래스. 
+// 좀 더 객체지향적으로 짜기 위해 Track 클래스를 만들었다. 
 package dynamic_beat_12;
 
 public class Track {
@@ -7,8 +9,9 @@ public class Track {
 	private String gameImage; // 해당 곡 실행 시 표지 이미지 
 	private String startMusic; // 게임선택 창에서 나오는 30초짜리 음악 
 	private String gameMusic; // 해당 곡 선택했을 때 (게임시작 후) 나오는 노래 
-	private String titleName; // �� ���� 
+	private String titleName; // 곡 제목 
 	
+	/// 위까지 코딩 후 우클릭 > Source > Generate Getters and Setters 	
 	public String getTitleImage() {
 		return titleImage;
 	}
@@ -46,6 +49,7 @@ public class Track {
 		this.titleName = titleName;
 	}
 	
+	// 생성자 - 변수 초기화 
 	public Track(String titleImage, String startImage, String gameImage, String startMusic, String gameMusic, String titleName) {
 		super();
 		this.titleImage = titleImage;
