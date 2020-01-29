@@ -1,3 +1,4 @@
+// Note : 하나의 떨어지는 note를 클래스화해서 다루기 위한 것.
 package dynamic_beat_13;
 
 import java.awt.Graphics2D;
@@ -9,11 +10,21 @@ public class Note extends Thread { // 각각의 note 또한 하나의 부분적�
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
 	private int x;
 	private int y = 580 - 1000 / Main.SLEEP_TIME * Main.NOTE_SPEED; 
-	// note가 만들어진 지 1초 후에 판정라인에 닿도록. 
-	// note speed=7, slee_time=10ms ==> note는 10ms에 7px만큼 이동 ==> note는 1초에 700px만큼 이동 
-	// (변수명을 note_speed라고 주는게 부적절 한 것 같은데...)
-	// note가 만들어진 지 1초 후에 판정라인에 닿게 하려면 판정라인(y=580)에서 1초에 이동하는 거리 700px을 빼서 y=-120에서 처음 생성되게 하자. 
-	// ==> int y = 580 - 1000/10*7 = -120 
+	/*
+	 * 1. note가 1초에 움직이는 거리 
+	 *  - SLEEP_TIME : 쓰레드를 이 시간동안 실행 중지시킴 
+	 *                => 쓰레드는 일시중지했다가 SLEEP_TIME 만큼의 시간이 지나면 다시 실행됨.
+	 *  - NOTE_SPEED : 쓰레드가 멈췄다가 다음에 실행될때까지 내려오는 y값 (픽셀) 
+	 *  - note는 SLEEP_TIME(ms) 동안 NOTE_SPEED(px) 만큼 내려간다 
+	 *    ==> note의 속도는 NOTE_SPEED(px)/SLEEP_TIME(ms) 
+	 * 	   				= NOTE_SPEED*1000/SLEEP_TIME (px/s) 
+	 *   ==> note는 1초에 NOTE_SPEED*1000/SLEEP_TIME 만큼 내려간다. 
+	 * 
+	 *  2. note가 생성되고 1초 후에 판정 라인에 닿도록 y 초기값 설정
+	 *  - note가 생성되고 y초기좌표에서 1초동안 NOTE_SPEED*1000/SLEEP_TIME 만큼 이동하는데 이게 판정라인 y좌표와 같아야 함. 
+	 *  - y초기좌표 + NOTE_SPEED*1000/SLEEP_TIME = 580 (판정라인 y좌표) 
+	 *    ==> y 초기좌표 = 580 - NOTE_SPEED*1000/SLEEP_TIME
+	*/
 	
 	private String noteType;
 	

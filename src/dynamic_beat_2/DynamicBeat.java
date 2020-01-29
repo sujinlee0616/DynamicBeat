@@ -6,7 +6,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
-public class DynamicBeat extends JFrame {
+public class DynamicBeat extends JFrame { //JFrame : GUI 사용하기 위해서 상속받았음. 
 	/*
 	 * 자바에서 제공하는, 단순히 이미지를 화면에 띄우는 방식을 이용하면 버퍼링이 심함 ==> '더블 버퍼링(double buffering)' 기법 사용. 
 	 * <Double Buffering이란?> 

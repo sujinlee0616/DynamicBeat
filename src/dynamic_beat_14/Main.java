@@ -3,9 +3,9 @@ package dynamic_beat_14;
 public class Main {
 	public static final int SCREEN_WIDTH=1280;
 	public static final int SCREEN_HEIGHT=720;
-	public static final int NOTE_SPEED = 3;
-	public static final int SLEEP_TIME = 10;
-	public static final int REACH_TIME = 2; // ³ëÆ®°¡ »ı¼ºµÈ ÀÌÈÄ ÆÇÁ¤¹Ù¿¡ µµ´ŞÇÏ±â ±îÁöÀÇ ½Ã°£ 
+	public static final int NOTE_SPEED = 3; // noteê°€ ë–¨ì–´ì§€ëŠ” ì†ë„ 
+	public static final int SLEEP_TIME = 10; // noteê°€ ë–¨ì–´ì§€ëŠ” ì£¼ê¸° 
+	public static final int REACH_TIME = 2; // ë…¸íŠ¸ê°€ ìƒì„±ëœ ì´í›„ íŒì •ë°”ì— ë„ë‹¬í•˜ê¸° ê¹Œì§€ì˜ ì‹œê°„ 
 	
 	public static void main(String[] args) {
 

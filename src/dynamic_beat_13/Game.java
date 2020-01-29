@@ -33,7 +33,7 @@ public class Game extends Thread {//Override
 	
 	ArrayList<Note> noteList = new ArrayList<Note>();
 	
-	// 생성자 - 초기화 
+	// <생성자> - 초기화 
 	public Game(String titleName, String difficulty, String musicTitle) {
 		this.titleName = titleName;
 		this.difficulty = difficulty;
