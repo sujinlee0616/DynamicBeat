@@ -124,7 +124,7 @@ public class Game extends Thread {
 		// 8. 판정 이미지 - 판정 결과(Miss, Late, Good, Great, Perfect, Early) 및 판정결과 아래의 노란 불꽃 이미지 
 		g.drawImage(yellowFlareImage, 335, 330, null);
 		g.drawImage(judgeImage, 460, 420, null);
-		// 9. 각 키별 키패드 눌렀을 때(빨간색으로), 뗐을 때 이미지 변경 (원래대로)
+		// 9. 각 키별 영역
 		g.drawImage(keyPadSImage, 228, 580, null);
 		g.drawImage(keyPadDImage, 332, 580, null);
 		g.drawImage(keyPadFImage, 436, 580, null);

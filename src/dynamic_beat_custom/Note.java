@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 
 public class Note extends Thread { // 각각의 note 또한 하나의 부분적인 기능으로써 떨어지는 역할을 수행해야 하므로 Thread로 만든다. 
 	private Image noteBasicImage = new ImageIcon(Main.class.getResource("../images/noteBasic.png")).getImage();
+	private Image noteBasicImageSpace = new ImageIcon(Main.class.getResource("../images/noteBasicSpace.png")).getImage();
 	private int x,y = 580 - (1000 / Main.SLEEP_TIME * Main.NOTE_SPEED) *Main.REACH_TIME; 
 	/*
 	 * y 초기값 : note의 속도와 note가 떨어지는 주기, 노트가 생성된 이후 판정바에 도달하는 시간을 고려하여 y값을 잡아줘야한다. 
@@ -80,8 +81,7 @@ public class Note extends Thread { // 각각의 note 또한 하나의 부분적�
 		if(!noteType.equals("Space")) { //space가 아니면 한 번만 그리면 되는데 
 			g.drawImage(noteBasicImage, x, y, null);
 		}else { //space면 길게 그려야 하니까 이렇게 두 번 그려줌 
-			g.drawImage(noteBasicImage, x, y, null);
-			g.drawImage(noteBasicImage, x+100, y, null);
+			g.drawImage(noteBasicImageSpace, x, y, null);
 		}
 	}
 	

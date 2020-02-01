@@ -45,9 +45,7 @@ public class Game extends Thread {
 	private String musicTitle;
 	// 게임 음악 
 	private Music gameMusic;
-	
 	private int totalScore=0;
-	private String scoreStr="";
 	
 	ArrayList<Note> noteList = new ArrayList<Note>();
 	
@@ -126,17 +124,11 @@ public class Game extends Thread {
 		// 7. 곡정보 - 2) 점수 
 		g.setColor(Color.LIGHT_GRAY);
 		g.setFont(new Font("Arial", Font.BOLD, 30));
-		if(totalScore!=0) {
-			scoreStr=Integer.toString(totalScore);
-		}
-		else {
-			scoreStr="0000";
-		}
-		g.drawString(scoreStr, 600, 702);
+		g.drawString(Integer.toString(totalScore), 600, 702);
 		// 8. 판정 이미지 - 판정 결과(Miss, Late, Good, Great, Perfect, Early) 및 판정결과 아래의 노란 불꽃 이미지 
 		g.drawImage(yellowFlareImage, 335, 330, null);
 		g.drawImage(judgeImage, 460, 420, null);
-		// 9. 각 키별 키패드 눌렀을 때(빨간색으로), 뗐을 때 이미지 변경 (원래대로)
+		// 9. 각 키별 키패드 영역 - 디폴트 이미지는 투명. 아래 press함수에서 각 키가 눌러지면 keyPadPressed(빨간색)으로 변경한다.
 		g.drawImage(keyPadSImage, 228, 580, null);
 		g.drawImage(keyPadDImage, 332, 580, null);
 		g.drawImage(keyPadFImage, 436, 580, null);
@@ -155,7 +147,7 @@ public class Game extends Thread {
 		// 효과음 삽입 
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"S"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"S"+"\"),");
 		}
 	}
 	public void releaseS() { // S 키 뗐을 때의 처리 
@@ -170,7 +162,7 @@ public class Game extends Thread {
 		keyPadDImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"D"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"D"+"\"),");
 		}
 	}
 	public void releaseD() { 
@@ -185,7 +177,7 @@ public class Game extends Thread {
 		keyPadFImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"F"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"F"+"\"),");
 		}
 	}
 	public void releaseF() {  
@@ -202,7 +194,7 @@ public class Game extends Thread {
 		keyPadSpace2Image = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumBig1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"Space"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"Space"+"\"),");
 		}
 	}
 	public void releaseSpace() { 
@@ -218,7 +210,7 @@ public class Game extends Thread {
 		keyPadJImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"J"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"J"+"\"),");
 		}
 	}
 	public void releaseJ() { 
@@ -233,7 +225,7 @@ public class Game extends Thread {
 		keyPadKImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"K"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"K"+"\"),");
 		}
 	}
 	public void releaseK() { 
@@ -248,7 +240,7 @@ public class Game extends Thread {
 		keyPadLImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println("new Beat("+gameMusic.getTime()+",\""+"L"+"\"),");
+			System.out.println("new Beat(startTime+gap*"+(gameMusic.getTime()-2000)/125+",\""+"L"+"\"),");
 		}
 	}
 	public void releaseL() { 
@@ -280,7 +272,7 @@ public class Game extends Thread {
 		 */
 		// Beat 생성 - 곡별로 음표와 시간 설정 (like 악보 그리기) - 곡1-1) Easy 
 		if(titleName.equals("Joakim Karud - Mighty Love") && difficulty.equals("Easy") ) {
-			int startTime = 4460 - Main.REACH_TIME*1000;
+			int startTime = 4460 - Main.REACH_TIME*1000; 
 			int gap = 125; // 125/1000 = 1/8 ==> 박자 계산을 위해서..
 			beats = new Beat[] { // 배열 초기화 ==> 곡에 따라 비트 다르니까..
 					new Beat(startTime+gap*1, "S"),
@@ -450,6 +442,7 @@ public class Game extends Thread {
 		}
 		// 곡별로 음표와 시간 설정 (like 악보 그리기) - 곡1-2) Hard
 		else if(titleName.equals("Joakim Karud - Mighty Love") && difficulty.equals("Hard")) {
+			// 첫 음 시작 시간 : 4460ms. REACH_TIME은 s니까 ms로 바꿔주기 위해서 *1000했음.
 			int startTime = 4460 - Main.REACH_TIME*1000;
 			int gap = 125;
 			beats = new Beat[] {
@@ -620,18 +613,186 @@ public class Game extends Thread {
 		}
 		// 곡별로 음표와 시간 설정 (like 악보 그리기) - 곡2-1) Easy
 		else if(titleName.equals("Bensound - Energy") && difficulty.equals("Easy")) {
-			int startTime = 4460 - Main.REACH_TIME*1000;
+			// 첫 음 시작 시간 : 2000ms
+			int startTime = 2000 - Main.REACH_TIME*1000;
+			System.out.println("startTime="+startTime);
 			int gap = 125;
 			beats = new Beat[] {
-					new Beat(startTime+gap*1, "K"), 
-					new Beat(startTime+gap*2, "J"), 
-					new Beat(startTime+gap*3, "K"), 
-					new Beat(startTime+gap*4, "K"), 
-					new Beat(startTime+gap*5, "K"), 
-					new Beat(startTime+gap*6, "K"), 
-					new Beat(startTime+gap*7, "J"), 
-//					new Beat(1000, "S"), 
-//					new Beat(1000, "S"), 				
+					new Beat(startTime+gap*3,"S"),
+					new Beat(startTime+gap*6,"D"),
+					new Beat(startTime+gap*13,"D"),
+					new Beat(startTime+gap*15,"D"),
+					new Beat(startTime+gap*16,"D"),
+					new Beat(startTime+gap*19,"S"),
+					new Beat(startTime+gap*23,"D"),
+					new Beat(startTime+gap*28,"D"),
+					new Beat(startTime+gap*30,"D"),
+					new Beat(startTime+gap*32,"D"),
+					new Beat(startTime+gap*35,"S"),
+					new Beat(startTime+gap*39,"D"),
+					new Beat(startTime+gap*45,"D"),
+					new Beat(startTime+gap*47,"D"),
+					new Beat(startTime+gap*48,"D"),
+					new Beat(startTime+gap*51,"S"),
+					new Beat(startTime+gap*54,"D"),
+					new Beat(startTime+gap*61,"D"),
+					new Beat(startTime+gap*62,"D"),
+					new Beat(startTime+gap*64,"D"),
+					new Beat(startTime+gap*67,"S"),
+					new Beat(startTime+gap*71,"D"),
+					new Beat(startTime+gap*78,"D"),
+					new Beat(startTime+gap*79,"D"),
+					new Beat(startTime+gap*80,"D"),
+					new Beat(startTime+gap*83,"S"),
+					new Beat(startTime+gap*87,"D"),
+					new Beat(startTime+gap*93,"D"),
+					new Beat(startTime+gap*95,"D"),
+					new Beat(startTime+gap*96,"D"),
+					new Beat(startTime+gap*99,"S"),
+					new Beat(startTime+gap*103,"D"),
+					new Beat(startTime+gap*110,"D"),
+					new Beat(startTime+gap*111,"D"),
+					new Beat(startTime+gap*112,"D"),
+					new Beat(startTime+gap*116,"S"),
+					new Beat(startTime+gap*119,"D"),
+					new Beat(startTime+gap*126,"D"),
+					new Beat(startTime+gap*127,"D"),
+					new Beat(startTime+gap*129,"D"),
+					new Beat(startTime+gap*133,"J"),
+					new Beat(startTime+gap*136,"K"),
+					new Beat(startTime+gap*142,"K"),
+					new Beat(startTime+gap*144,"K"),
+					new Beat(startTime+gap*145,"K"),
+					new Beat(startTime+gap*148,"J"),
+					new Beat(startTime+gap*152,"K"),
+					new Beat(startTime+gap*159,"K"),
+					new Beat(startTime+gap*160,"K"),
+					new Beat(startTime+gap*161,"K"),
+					new Beat(startTime+gap*164,"J"),
+					new Beat(startTime+gap*168,"K"),
+					new Beat(startTime+gap*175,"K"),
+					new Beat(startTime+gap*176,"K"),
+					new Beat(startTime+gap*177,"K"),
+					new Beat(startTime+gap*180,"J"),
+					new Beat(startTime+gap*184,"K"),
+					new Beat(startTime+gap*191,"K"),
+					new Beat(startTime+gap*192,"K"),
+					new Beat(startTime+gap*193,"K"),
+					new Beat(startTime+gap*197,"J"),
+					new Beat(startTime+gap*201,"K"),
+					new Beat(startTime+gap*207,"K"),
+					new Beat(startTime+gap*208,"K"),
+					new Beat(startTime+gap*209,"K"),
+					new Beat(startTime+gap*212,"J"),
+					new Beat(startTime+gap*217,"K"),
+					new Beat(startTime+gap*222,"K"),
+					new Beat(startTime+gap*224,"K"),
+					new Beat(startTime+gap*225,"K"),
+					new Beat(startTime+gap*228,"J"),
+					new Beat(startTime+gap*232,"K"),
+					new Beat(startTime+gap*239,"K"),
+					new Beat(startTime+gap*240,"K"),
+					new Beat(startTime+gap*242,"K"),
+					new Beat(startTime+gap*245,"K"),
+					new Beat(startTime+gap*249,"J"),
+					new Beat(startTime+gap*251,"Space"),
+					new Beat(startTime+gap*257,"J"),
+					new Beat(startTime+gap*262,"K"),
+					new Beat(startTime+gap*265,"J"),
+					new Beat(startTime+gap*272,"K"),
+					new Beat(startTime+gap*273,"K"),
+					new Beat(startTime+gap*274,"K"),
+					new Beat(startTime+gap*277,"K"),
+					new Beat(startTime+gap*281,"J"),
+					new Beat(startTime+gap*288,"K"),
+					new Beat(startTime+gap*289,"K"),
+					new Beat(startTime+gap*290,"K"),
+					new Beat(startTime+gap*294,"J"),
+					new Beat(startTime+gap*297,"K"),
+					new Beat(startTime+gap*304,"K"),
+					new Beat(startTime+gap*305,"K"),
+					new Beat(startTime+gap*306,"K"),
+					new Beat(startTime+gap*310,"K"),
+					new Beat(startTime+gap*313,"J"),
+					new Beat(startTime+gap*315,"Space"),
+					new Beat(startTime+gap*320,"J"),
+					new Beat(startTime+gap*326,"K"),
+					new Beat(startTime+gap*330,"J"),
+					new Beat(startTime+gap*336,"K"),
+					new Beat(startTime+gap*337,"K"),
+					new Beat(startTime+gap*338,"K"),
+					new Beat(startTime+gap*342,"K"),
+					new Beat(startTime+gap*346,"J"),
+					new Beat(startTime+gap*352,"K"),
+					new Beat(startTime+gap*354,"K"),
+					new Beat(startTime+gap*354,"K"),
+					new Beat(startTime+gap*357,"J"),
+					new Beat(startTime+gap*362,"K"),
+					new Beat(startTime+gap*369,"K"),
+					new Beat(startTime+gap*370,"K"),
+					new Beat(startTime+gap*371,"K"),
+					new Beat(startTime+gap*374,"J"),
+					new Beat(startTime+gap*378,"Space"),
+					new Beat(startTime+gap*385,"K"),
+					new Beat(startTime+gap*387,"K"),
+					new Beat(startTime+gap*391,"K"),
+					new Beat(startTime+gap*394,"J"),
+					new Beat(startTime+gap*401,"K"),
+					new Beat(startTime+gap*402,"K"),
+					new Beat(startTime+gap*403,"K"),
+					new Beat(startTime+gap*406,"K"),
+					new Beat(startTime+gap*410,"J"),
+					new Beat(startTime+gap*417,"K"),
+					new Beat(startTime+gap*418,"K"),
+					new Beat(startTime+gap*419,"K"),
+					new Beat(startTime+gap*422,"J"),
+					new Beat(startTime+gap*426,"K"),
+					new Beat(startTime+gap*433,"K"),
+					new Beat(startTime+gap*434,"K"),
+					new Beat(startTime+gap*438,"K"),
+					new Beat(startTime+gap*442,"J"),
+					new Beat(startTime+gap*444,"Space"),
+					new Beat(startTime+gap*449,"J"),
+					new Beat(startTime+gap*455,"K"),
+					new Beat(startTime+gap*459,"S"),
+					new Beat(startTime+gap*465,"K"),
+					new Beat(startTime+gap*466,"K"),
+					new Beat(startTime+gap*468,"K"),
+					new Beat(startTime+gap*471,"J"),
+					new Beat(startTime+gap*475,"D"),
+					new Beat(startTime+gap*481,"K"),
+					new Beat(startTime+gap*482,"K"),
+					new Beat(startTime+gap*483,"K"),
+					new Beat(startTime+gap*487,"D"),
+					new Beat(startTime+gap*491,"J"),
+					new Beat(startTime+gap*498,"K"),
+					new Beat(startTime+gap*499,"K"),
+					new Beat(startTime+gap*500,"K"),
+					new Beat(startTime+gap*504,"K"),
+					new Beat(startTime+gap*507,"J"),
+					new Beat(startTime+gap*509,"Space"),
+					new Beat(startTime+gap*513,"J"),
+					new Beat(startTime+gap*519,"S"),
+					new Beat(startTime+gap*519,"K"),
+					new Beat(startTime+gap*523,"J"),
+					new Beat(startTime+gap*529,"K"),
+					new Beat(startTime+gap*530,"K"),
+					new Beat(startTime+gap*532,"K"),
+					new Beat(startTime+gap*535,"K"),
+					new Beat(startTime+gap*539,"J"),
+					new Beat(startTime+gap*545,"K"),
+					new Beat(startTime+gap*547,"K"),
+					new Beat(startTime+gap*548,"K"),
+					new Beat(startTime+gap*552,"S"),
+					new Beat(startTime+gap*552,"K"),
+					new Beat(startTime+gap*556,"K"),
+					new Beat(startTime+gap*562,"K"),
+					new Beat(startTime+gap*563,"K"),
+					new Beat(startTime+gap*567,"K"),
+					new Beat(startTime+gap*572,"J"),
+					new Beat(startTime+gap*574,"Space"),
+					new Beat(startTime+gap*578,"J"),
+						
 			};
 		}
 		// 곡별로 음표와 시간 설정 (like 악보 그리기) - 곡2-2) Hard
