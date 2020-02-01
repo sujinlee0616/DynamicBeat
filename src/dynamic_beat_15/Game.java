@@ -194,7 +194,6 @@ public class Game extends Thread {
 		 */
 		// Beat 생성 - 곡별로 음표와 시간 설정 (like 악보 그리기) - 곡1-1) Easy 
 		if(titleName.equals("Joakim Karud - Mighty Love") && difficulty.equals("Easy") ) {
-			// 첫번째 박자가 시작하는 시간 = 전체 곡 시간(s) - 노트가 생성된 이후 판정바에 도달하기 까지의 시간 (ms)*1000
 			int startTime = 4460 - Main.REACH_TIME*1000;
 			int gap = 125; // 125/1000 = 1/8 ==> 박자 계산을 위해서..
 			beats = new Beat[] { // 배열 초기화 ==> 곡에 따라 비트 다르니까..

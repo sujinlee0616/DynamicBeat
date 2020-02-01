@@ -193,7 +193,6 @@ public class Game extends Thread {
 		}
 		// 곡별로 음표와 시간 설정 (like 악보 그리기) - 곡3.
 		else if (titleName.equals("Joakim Karud - Mighty Love")) {
-			// 첫번째 박자가 시작하는 시간 = 전체 곡 시간(s) - 노트가 생성된 이후 판정바에 도달하기 까지의 시간 (ms)*1000
 			int startTime = 4460 - Main.REACH_TIME * 1000;
 			int gap = 125;
 			beats = new Beat[] { 
