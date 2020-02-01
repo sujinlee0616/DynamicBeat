@@ -1,4 +1,3 @@
-// [작업요약] note 판정에 대한 디자인 처리 
 package dynamic_beat_custom;
 
 import java.awt.Color;

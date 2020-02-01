@@ -89,7 +89,7 @@ public class Note extends Thread { // 각각의 note 또한 하나의 부분적�
 	public void drop(){ 
 		y += Main.NOTE_SPEED;
 		if(y>620) { // y값이 판정바 아래로 내려갔다면 
-			System.out.println("Miss"); // Miss라고 판정 
+			//System.out.println("Miss"); // Miss라고 판정 
 			close();
 		}
 	}
@@ -120,37 +120,37 @@ public class Note extends Thread { // 각각의 note 또한 하나의 부분적�
 	//<판정함수>
 	public String judge() {
 		if(y>=613) {
-			System.out.println("Late");
+			//System.out.println("Late");
 			close();
 			return "Late";
 		}
 		else if(y>=600) {
-			System.out.println("Good");
+			//System.out.println("Good");
 			close();
 			return "Good";
 		}
 		else if(y>=587) {
-			System.out.println("Great");
+			//System.out.println("Great");
 			close();
 			return "Great";
 		}
 		else if(y>=573) {
-			System.out.println("Perfect");
+			//System.out.println("Perfect");
 			close();
 			return "Perfect";
 		}
 		else if(y>=565) {
-			System.out.println("Great");
+			//System.out.println("Great");
 			close();
 			return "Great";
 		}
 		else if(y>=550) {
-			System.out.println("Good");
+			//System.out.println("Good");
 			close();
 			return "Good";
 		}
 		else if(y>=535) {
-			System.out.println("Early");
+			//System.out.println("Early");
 			close();
 			return "Early";
 		}
@@ -159,6 +159,46 @@ public class Note extends Thread { // 각각의 note 또한 하나의 부분적�
 	
 	public int getY() { //현재의 y좌표 반환
 		return y; 
+	}
+	
+	//<점수함수>
+	public int score() {
+		if(y>=613) { //Late
+			//System.out.println("Current score="+10);
+			close();
+			return 10;
+		}
+		else if(y>=600) { //Good
+			//System.out.println("Current score="+20);
+			close();
+			return 20;
+		}
+		else if(y>=587) { //Great
+			//System.out.println("Current score="+30);
+			close();
+			return 30;
+		}
+		else if(y>=573) { //Perfect
+			//System.out.println("Current score="+40);
+			close();
+			return 40;
+		}
+		else if(y>=565) { //Great
+			//System.out.println("Current score="+30);
+			close();
+			return 30;
+		}
+		else if(y>=550) { //Good
+			//System.out.println("Current score="+20);
+			close();
+			return 20;
+		}
+		else if(y>=535) { //Early
+			//System.out.println("Current score="+10);
+			close();
+			return 10;
+		}
+		return 0;
 	}
 
 }

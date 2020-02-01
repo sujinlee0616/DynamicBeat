@@ -46,6 +46,9 @@ public class Game extends Thread {
 	// 게임 음악 
 	private Music gameMusic;
 	
+	private int totalScore=0;
+	private String scoreStr="";
+	
 	ArrayList<Note> noteList = new ArrayList<Note>();
 	
 	//비트 찍어주려고 ..
@@ -56,9 +59,9 @@ public class Game extends Thread {
 		this.titleName = titleName;
 		this.difficulty = difficulty;
 		this.musicTitle = musicTitle;
-		gameMusic = new Music(this.musicTitle, false);
-		
+		gameMusic = new Music(this.musicTitle, false);		
 	}
+	
 	
 	// 게임 화면에서 그려줘야 하는 요소들 
 	public void screenDraw(Graphics2D g) {
@@ -122,8 +125,14 @@ public class Game extends Thread {
 		g.drawString("L", 993, 609);
 		// 7. 곡정보 - 2) 점수 
 		g.setColor(Color.LIGHT_GRAY);
-		g.setFont(new Font("Elephant", Font.BOLD, 30));
-		g.drawString("000000", 565, 702);
+		g.setFont(new Font("Arial", Font.BOLD, 30));
+		if(totalScore!=0) {
+			scoreStr=Integer.toString(totalScore);
+		}
+		else {
+			scoreStr="0000";
+		}
+		g.drawString(scoreStr, 600, 702);
 		// 8. 판정 이미지 - 판정 결과(Miss, Late, Good, Great, Perfect, Early) 및 판정결과 아래의 노란 불꽃 이미지 
 		g.drawImage(yellowFlareImage, 335, 330, null);
 		g.drawImage(judgeImage, 460, 420, null);
@@ -140,12 +149,13 @@ public class Game extends Thread {
 	
 	public void pressS() { // S 키 눌렀을 때의 처리
 		judge("S");
+		score("S");
 		noteRouteSImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadSImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		// 효과음 삽입 
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"S");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"S"+"\"),");
 		}
 	}
 	public void releaseS() { // S 키 뗐을 때의 처리 
@@ -155,11 +165,12 @@ public class Game extends Thread {
 	
 	public void pressD() { 
 		judge("D");
+		score("D");
 		noteRouteDImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadDImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"D");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"D"+"\"),");
 		}
 	}
 	public void releaseD() { 
@@ -169,11 +180,12 @@ public class Game extends Thread {
 	
 	public void pressF() { 
 		judge("F");
+		score("F");
 		noteRouteFImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadFImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"F");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"F"+"\"),");
 		}
 	}
 	public void releaseF() {  
@@ -183,13 +195,14 @@ public class Game extends Thread {
 	
 	public void pressSpace() { 
 		judge("Space");
+		score("Space");
 		noteRouteSpace1Image = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadSpace1Image = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		noteRouteSpace2Image = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadSpace2Image = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumBig1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"Space");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"Space"+"\"),");
 		}
 	}
 	public void releaseSpace() { 
@@ -200,11 +213,12 @@ public class Game extends Thread {
 	}
 	public void pressJ() { 
 		judge("J");
+		score("J");
 		noteRouteJImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadJImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"J");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"J"+"\"),");
 		}
 	}
 	public void releaseJ() { 
@@ -214,11 +228,12 @@ public class Game extends Thread {
 
 	public void pressK() { 
 		judge("K");
+		score("K");
 		noteRouteKImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadKImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"K");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"K"+"\"),");
 		}
 	}
 	public void releaseK() { 
@@ -228,11 +243,12 @@ public class Game extends Thread {
 	
 	public void pressL() {  
 		judge("L");
+		score("L");
 		noteRouteLImage = new ImageIcon(Main.class.getResource("../images/noteRoutePressed.png")).getImage();
 		keyPadLImage = new ImageIcon(Main.class.getResource("../images/keyPadPressed.png")).getImage();
 		new Music("drumSmall1.mp3",false).start();
 		if (beatChecker==true) {
-			System.out.println(gameMusic.getTime()+"L");
+			System.out.println("new Beat("+gameMusic.getTime()+",\""+"L"+"\"),");
 		}
 	}
 	public void releaseL() { 
@@ -703,5 +719,36 @@ public class Game extends Thread {
 			judgeImage = new ImageIcon(Main.class.getResource("../images/judgeEarly.png")).getImage();
 		}		
 	}
+	
+	//<채점 함수> - 유저가 입력한 키가 실제 note의 키와 동일하면 Note.java의 score함수에서 값을 받아서 scoreEvent 함수에 넘긴다. 
+	public void score(String input) {
+		for(int i=0; i<noteList.size(); i++) {
+			Note note = noteList.get(i);
+			if(input.equals(note.getNoteType())) {
+				scoreEvent(note.score());
+				break;
+			}
+		}
+	}
+	
+	//<채점 이벤트 함수> - Note.java의 judge결과에 따라 이미지를 노출한다. 
+		public void scoreEvent(int score) {
+			if(score==10) {
+				totalScore+=10;
+				//System.out.println("Total score="+totalScore);
+			}
+			else if(score==20) {
+				totalScore+=20;
+				//System.out.println("Total score="+totalScore);
+			}
+			else if(score==30) {
+				totalScore+=30;
+				//System.out.println("Total score="+totalScore);
+			}
+			else if(score==40) {
+				totalScore+=40;
+				//System.out.println("Total score="+totalScore);
+			}
+		}
 
 }
