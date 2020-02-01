@@ -1,3 +1,4 @@
+//[ì‘ì—…ìš”ì•½] noteì˜ íŒì •ì²˜ë¦¬ 
 package dynamic_beat_15;
 
 import java.awt.Color;
@@ -66,12 +67,15 @@ public class DynamicBeat extends JFrame {
 	private Image selectedImage;
 	private Music selectedMusic;
 	private Music introMusic = new Music("introMusic.mp3", true);
-	private int	nowSelected = 0; // ÇöÀç ¼±ÅÃµÈ Æ®·¢ÀÇ °î¹øÈ£ 
+	private int	nowSelected = 0; 
 	
-	public static Game game; 
+	public static Game game; // ì´ˆê¸°í™”
+	// í•˜ë‚˜ì˜ ê²Œì„ì€, ê²Œì„ í”„ë¡œê·¸ë¨ í•˜ë‚˜ê°€ ì‹¤í–‰ëì„ ë•Œ, ë‹¨ í•˜ë‚˜ì˜ ê²Œì„ë§Œ ì§„í–‰ ê°€ëŠ¥
+	// ì¦‰, ë™ì‹œì— ì—¬ëŸ¬ê³¡ì„ ì¬ìƒì‹œí‚¤ë©´ì„œ ê²Œì„í•  ìˆœ ì—†ìŒ. 
+	// ì¦‰, gameì´ë¼ëŠ” ë³€ìˆ˜ëŠ” ê²Œì„ í”„ë¡œì íŠ¸ ë‚´ì—ì„œ í†µìš©ë˜ëŠ” í•˜ë‚˜ì˜ ë³€ìˆ˜ì´ë¯€ë¡œ public static ë¶™ì—¬ì£¼ì—ˆìŒ. 
 	
 	public DynamicBeat() {
-		// trackList¿¡ add
+		// trackListì— add
 		trackList.add(new Track("Energy Title Image.png", 
 				"Energy Start Image.png", "Energy Game Image.png", 
 				"Energy Selected.mp3", "Bensound - Energy.mp3", "Bensound - Energy"));
@@ -82,12 +86,12 @@ public class DynamicBeat extends JFrame {
 				"Mighty Love Start Image.png", "Mighty Love Game Image.png", 
 				"Mighty Love Selected.mp3", "Joakim Karud - Mighty Love.mp3","Joakim Karud - Mighty Love"));
 
-		setUndecorated(true); // À©µµ¿ìÃ¢ ¸Ş´º¹Ù ¾È º¸ÀÌ°Ô²û 
+		setUndecorated(true); // ìœˆë„ìš°ì°½ ë©”ë‰´ë°” ì•ˆ ë³´ì´ê²Œë” 
 		setTitle("Dynamic Beat");
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
-		setResizable(false); // Ã¢ Å©±â º¯°æ ºÒ°¡´ÉÇÏ°Ô
-		setLocationRelativeTo(null); // Ã¢ÀÌ Á¤ Áß¾Ó¿¡ ¶ß°Ô 
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ã¢ Á¾·á ½Ã °ÔÀÓ Á¾·áµÇµµ·Ï (±×·¸Áö ¾ÊÀ¸¸é °ÔÀÓ ²¨µµ °è¼Ó µ¹¾Æ°¨...)
+		setResizable(false);  // ì°½ í¬ê¸° ë³€ê²½ ë¶ˆê°€ëŠ¥í•˜ê²Œ
+		setLocationRelativeTo(null); // ì°½ì´ ì • ì¤‘ì•™ì— ëœ¨ê²Œ 
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // ì°½ ì¢…ë£Œ ì‹œ ê²Œì„ ì¢…ë£Œë˜ë„ë¡
 		setVisible(true);
 		setBackground(new Color(0, 0, 0, 0));
 		setLayout(null);
@@ -154,8 +158,8 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// °ÔÀÓ ½ÃÀÛ ÀÌº¥Æ®
-				enterMain();
+				// ì‹œì‘ë²„íŠ¼ ì´ë²¤íŠ¸ 
+				enterMain(); // ì‹œì‘ë²„íŠ¼ í´ë¦­ ì‹œ enterMain í•¨ìˆ˜(ë©”ì„œë“œ) ì‹¤í–‰ 
 
 			}
 		});
@@ -220,7 +224,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿ŞÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì™¼ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				selectLeft();
 			}
 		});
@@ -251,7 +255,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¿À¸¥ÂÊ ¹öÆ° ÀÌº¥Æ® 
+				// ì˜¤ë¥¸ìª½ ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				selectRight();
 			}
 		});
@@ -282,7 +286,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ³­ÀÌµµ ½¬¿ò ÀÌº¥Æ®
+				// easy ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				gameStart(nowSelected, "Easy");
 
 			}
@@ -314,7 +318,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ³­ÀÌµµ ¾î·Á¿ò ÀÌº¥Æ®
+				// hard ë²„íŠ¼ ì´ë²¤íŠ¸
 				gameStart(nowSelected, "Hard");
 
 			}
@@ -346,7 +350,7 @@ public class DynamicBeat extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				Music buttonEnteredMusic = new Music("buttonPressedMusic.mp3", false);
 				buttonEnteredMusic.start();
-				// ¸ŞÀÎ È­¸éÀ¸·Î µ¹¾Æ°¡´Â ÀÌº¥Æ® 
+				// ë°±ë²„íŠ¼ ì´ë²¤íŠ¸ 
 				backMain();
 			}
 		});
@@ -376,7 +380,7 @@ public class DynamicBeat extends JFrame {
 	public void paint(Graphics g) {
 		screenImage = createImage(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		screenGraphic = screenImage.getGraphics();
-		screenDraw((Graphics2D) screenGraphic);  // Antialiasing (±ÛÀÚ ¼±¸íÇÏ°Ô) À§ÇØ¼­ Graphics2D¸¦ import ÇßÀ½.  
+		screenDraw((Graphics2D) screenGraphic);  // Antialiasing ì²˜ë¦¬ - ê¸€ì ê¹¨ì§ ë°©ì§€. Graphics2D import í•´ì•¼í•¨.
 		g.drawImage(screenImage, 0, 0, null);
 	}
 
@@ -395,12 +399,13 @@ public class DynamicBeat extends JFrame {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		// ì¼ì •í•œ ì‹œê°„ì°¨ë¥¼ ë‘ê³  ì‹¤í–‰í•˜ê²Œë”. ==> ì• ë‹ˆë©”ì´ì…˜ì´ ë” ë§¤ë„ëŸ½ê²Œ ë‚˜ì˜¨ë‹¤. 
 		this.repaint();
 	}
 	
-	// °î ¼³Á¤ 
+	// <ê³¡ ì„ íƒ í•¨ìˆ˜>
 	public void selectTrack(int nowSelected) {
-		if(selectedMusic != null) // ÀÌ¹Ì ½ÇÇàµÇ°í ÀÖ´ø °îÀÌ ÀÖ´Ù¸é ÁßÁö½ÃÄÑ¶ó 
+		if(selectedMusic != null) // ì´ë¯¸ ì–´ë–¤ ê³¡ì´ ì‹¤í–‰ë˜ê³  ìˆì—ˆë‹¤ë©´ ì‹¤í–‰ë˜ê³  ìˆë˜ ê³¡ì„ ì¢…ë£Œì‹œí‚´
 			selectedMusic.close();
 		titleImage = new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getTitleImage()))
 				.getImage();
@@ -410,9 +415,9 @@ public class DynamicBeat extends JFrame {
 		selectedMusic.start();
 	}
 	
-	// leftButton ±â´É
+	// <leftButton ì´ë²¤íŠ¸ ì²˜ë¦¬ í•¨ìˆ˜>
 	public void selectLeft() {
-		// °¡Àå ¿ŞÂÊ¿¡ ÀÖ´Â °î¿¡¼­ leftButton ´©¸£¸é ¸Ç ¿À¸¥ÂÊ¿¡ ÀÖ´Â °îÀ¸·Î °¡°Ô²û Ã³¸® 
+		// 0ë²ˆì§¸ ê³¡ì¼ë•Œ ì™¼ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ê°€ì¥ ë§ˆì§€ë§‰ ê³¡ì´ ë‚˜ì˜¤ë„ë¡. 
 		if(nowSelected == 0)
 			nowSelected = trackList.size() -1;
 		else 
@@ -421,9 +426,9 @@ public class DynamicBeat extends JFrame {
 
 	}
 	
-	// leftButton ±â´É
+	// <rightButton ì´ë²¤íŠ¸ ì²˜ë¦¬ í•¨ìˆ˜>
 	public void selectRight() {
-		// °¡Àå ¿ŞÂÊ¿¡ ÀÖ´Â °î¿¡¼­ leftButton ´©¸£¸é ¸Ç ¿À¸¥ÂÊ¿¡ ÀÖ´Â °îÀ¸·Î °¡°Ô²û Ã³¸®
+		// ì œì¼ ë§ˆì§€ë§‰ ê³¡ì¼ ë•Œ ì˜¤ë¥¸ìª½ ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ê°€ì¥ ì²«ë²ˆì§¸ ê³¡ì´ ë‚˜ì˜¤ë„ë¡.
 		if (nowSelected == trackList.size() - 1)
 			nowSelected = 0;
 		else
@@ -432,40 +437,54 @@ public class DynamicBeat extends JFrame {
 
 	}
 
+	// <ê²Œì„ì‹œì‘ í•¨ìˆ˜> 
 	public void gameStart(int nowSelected, String difficulty) {
-		if(selectedMusic != null) // ÀÌ¹Ì ½ÇÇàµÇ°í ÀÖ´ø °îÀÌ ÀÖ´Ù¸é ÁßÁö½ÃÄÑ¶ó 
+		if(selectedMusic != null) // ì´ë¯¸ ì–´ë–¤ ìŒì•…ì´ ì‹¤í–‰ì¤‘ì´ë¼ë©´ ê·¸ ìŒì•… ì¤‘ì§€ì‹œí‚´ 
 			selectedMusic.close();
-		isMainScreen=false; // ==> screenDraw¿¡¼­ selectedImage, titleImage ½ÇÇà ¾ÈµÊ 
+		isMainScreen=false; // ë©”ì¸í™”ë©´ì´ ì•„ë‹ˆë¼ê³  ì•Œë ¤ì¤Œ ==> screenDrawì—ì„œ if (isMainScreen) ì‹¤í–‰ë˜ì§€ ì•Šë„ë¡ í•´ì¤Œ.  
+		// ê²Œì„í™”ë©´ìœ¼ë¡œ ë„˜ì–´ê°€ë©´ì„œ ë©”ì¸í™”ë©´ì— ìˆë˜ ë²„íŠ¼ë“¤ ìˆ¨ê¹€
 		leftButton.setVisible(false);
 		rightButton.setVisible(false);
 		easyButton.setVisible(false);
 		hardButton.setVisible(false);
+		// ê²Œì„í™”ë©´ìœ¼ë¡œ ë„˜ì–´ê°”ìœ¼ë‹ˆ ë°°ê²½ ì´ë¯¸ì§€ ë°”ê¿”ì¤Œ
 		background = new ImageIcon(Main.class.getResource("../images/"+trackList.get(nowSelected).getGameImage())).getImage();
 		backButton.setVisible(true);
 		isGameScreen = true;
 		game = new Game(trackList.get(nowSelected).getTitleName(), difficulty, trackList.get(nowSelected).getGameMusic());
-		game.start(); //Game.javaÀÇ runÇÔ¼ö°¡ ½ÇÇàµÊ 
-		setFocusable(true); //°ÔÀÓÃ¢ (¸ŞÀÎ ÇÁ·¹ÀÓ)¿¡ Å°º¸µå Æ÷Ä¿½º°¡ ¸ÂÃçÁ® ÀÖµµ·Ï 
+		game.start(); // Game.javaì˜ runí•¨ìˆ˜ê°€ ì‹¤í–‰ë¨ 
+		setFocusable(true); //ê²Œì„ì°½ (ë©”ì¸ í”„ë ˆì„)ì— í‚¤ë³´ë“œ í¬ì»¤ìŠ¤ê°€ ë§ì¶°ì ¸ ìˆë„ë¡ 
+		// í™”ë©´ì´ ë°”ë€œì— ë”°ë¼ focusê°€ ë§ì§€ ì•Šì„ ìˆ˜ë„ ìˆìŒ.
+		// ê²Œì„ ì‹œì‘ ì‹œì— í•­ìƒ mainì— í‚¤ë³´ë“œ í¬ì»¤ìŠ¤ê°€ ë§ì¶°ì ¸ ìˆì–´ì•¼ í‚¤ë³´ë“œë¥¼ ëˆŒë €ì„ ë•Œ í‚¤ë³´ë“œ ì´ë²¤íŠ¸ê°€ ì •ìƒì ìœ¼ë¡œ ì‘ë™í•¨.
 	}
 	
+	// <ë©”ì¸ìœ¼ë¡œ ëŒì•„ê°€ëŠ” í•¨ìˆ˜>
 	public void backMain(){
 		isGameScreen = false;
 		isMainScreen = true;
+		// ë²„íŠ¼ ì²˜ë¦¬ - ë©”ì¸í™”ë©´ì— ë‚˜ì˜¤ëŠ” ë²„íŠ¼ë“¤ ë…¸ì¶œì‹œí‚´ 
 		leftButton.setVisible(true);
 		rightButton.setVisible(true);
 		easyButton.setVisible(true);
 		hardButton.setVisible(true);
+		// ë°°ê²½ ì²˜ë¦¬ 
 		background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
+		// ë²„íŠ¼ ì²˜ë¦¬ - ê²Œì„í™”ë©´ì— ë‚˜ì˜¤ëŠ” ë²„íŠ¼ ìˆ¨ê¹€
 		backButton.setVisible(false);
 		selectTrack(nowSelected);
 		game.close();
 	}
 	
+	// <ì‹œì‘ë²„íŠ¼ ì´ë²¤íŠ¸ ì²˜ë¦¬ í•¨ìˆ˜> 
+	// : introí™”ë©´ â†’ ë©”ì¸ í™”ë©´ 
 	public void enterMain() {
+		// ë²„íŠ¼ ì²˜ë¦¬ - ì¸íŠ¸ë¡œ í™”ë©´ì— ìˆë˜ ë²„íŠ¼ë“¤ ìˆ¨ê¹€ 
 		startButton.setVisible(false);
 		quitButton.setVisible(false);
+		// ë°°ê²½ ì´ë¯¸ì§€ ë³€ê²½ 
 		background = new ImageIcon(Main.class.getResource("../images/mainBackground.jpg")).getImage();
 		isMainScreen = true;
+		// ë²„íŠ¼ ì²˜ë¦¬ - ë©”ì¸í™”ë©´ì— ë‚˜ì˜¤ëŠ” ë²„íŠ¼ë“¤ ë…¸ì¶œì‹œí‚´
 		leftButton.setVisible(true);
 		rightButton.setVisible(true);
 		easyButton.setVisible(true);

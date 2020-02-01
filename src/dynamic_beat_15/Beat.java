@@ -1,3 +1,5 @@
+// Beat 클래스 : 박자 타이밍과 노트의 종류에 대한 정보를 담는 클래스. 
+// 곡별로 음표와 시간 설정 (like 악보 그리기)
 package dynamic_beat_15;
 
 public class Beat {
