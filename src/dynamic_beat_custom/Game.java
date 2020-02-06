@@ -617,93 +617,125 @@ public class Game extends Thread {
 			int startTime = 2000 - Main.REACH_TIME*1000;
 			System.out.println("startTime="+startTime);
 			int gap = 125;
-			beats = new Beat[] {
-					new Beat(startTime+gap*3,"S"),
-					new Beat(startTime+gap*6,"D"),
-					new Beat(startTime+gap*13,"D"),
-					new Beat(startTime+gap*15,"D"),
-					new Beat(startTime+gap*16,"D"),
-					new Beat(startTime+gap*19,"S"),
-					new Beat(startTime+gap*23,"D"),
-					new Beat(startTime+gap*28,"D"),
-					new Beat(startTime+gap*30,"D"),
-					new Beat(startTime+gap*32,"D"),
-					new Beat(startTime+gap*35,"S"),
-					new Beat(startTime+gap*39,"D"),
-					new Beat(startTime+gap*45,"D"),
-					new Beat(startTime+gap*47,"D"),
-					new Beat(startTime+gap*48,"D"),
-					new Beat(startTime+gap*51,"S"),
-					new Beat(startTime+gap*54,"D"),
-					new Beat(startTime+gap*61,"D"),
-					new Beat(startTime+gap*62,"D"),
-					new Beat(startTime+gap*64,"D"),
-					new Beat(startTime+gap*67,"S"),
+			beats = new Beat[] { // pattern: +4,+6,+2,+1,+3
+					new Beat(startTime+gap*3,"J"), // 1
+					new Beat(startTime+gap*7,"K"),
+					new Beat(startTime+gap*13,"K"),
+					new Beat(startTime+gap*15,"K"),
+					new Beat(startTime+gap*16,"K"), 
+					new Beat(startTime+gap*19,"J"), //2
+					new Beat(startTime+gap*23,"K"),
+					new Beat(startTime+gap*29,"K"),
+					new Beat(startTime+gap*31,"K"),
+					new Beat(startTime+gap*32,"K"), 
+					new Beat(startTime+gap*35,"J"), // 3
+					new Beat(startTime+gap*39,"K"),
+					new Beat(startTime+gap*45,"K"),
+					new Beat(startTime+gap*47,"K"),
+					new Beat(startTime+gap*48,"K"), 
+					new Beat(startTime+gap*51,"J"), // 4
+					new Beat(startTime+gap*55,"K"),
+					new Beat(startTime+gap*61,"K"),
+					new Beat(startTime+gap*63,"K"),
+					new Beat(startTime+gap*64,"K"), 
+					new Beat(startTime+gap*67,"J"), // 5 - 새로운 음 섞임 (왼손)
+					new Beat(startTime+gap*67,"S"), 
+					new Beat(startTime+gap*71,"K"),
 					new Beat(startTime+gap*71,"D"),
-					new Beat(startTime+gap*78,"D"),
+					new Beat(startTime+gap*77,"K"),
+					new Beat(startTime+gap*77,"D"),
+					new Beat(startTime+gap*79,"K"),
 					new Beat(startTime+gap*79,"D"),
-					new Beat(startTime+gap*80,"D"),
+					new Beat(startTime+gap*80,"K"), 
+					new Beat(startTime+gap*80,"D"), 
+					new Beat(startTime+gap*83,"J"), // 6 - 새로운 음 섞임 (왼손) 
 					new Beat(startTime+gap*83,"S"),
+					new Beat(startTime+gap*87,"K"),
 					new Beat(startTime+gap*87,"D"),
+					new Beat(startTime+gap*93,"K"),
 					new Beat(startTime+gap*93,"D"),
+					new Beat(startTime+gap*95,"K"),
 					new Beat(startTime+gap*95,"D"),
-					new Beat(startTime+gap*96,"D"),
-					new Beat(startTime+gap*99,"S"),
-					new Beat(startTime+gap*103,"D"),
-					new Beat(startTime+gap*110,"D"),
-					new Beat(startTime+gap*111,"D"),
-					new Beat(startTime+gap*112,"D"),
-					new Beat(startTime+gap*116,"S"),
-					new Beat(startTime+gap*119,"D"),
-					new Beat(startTime+gap*126,"D"),
-					new Beat(startTime+gap*127,"D"),
-					new Beat(startTime+gap*129,"D"),
-					new Beat(startTime+gap*133,"J"),
-					new Beat(startTime+gap*136,"K"),
-					new Beat(startTime+gap*142,"K"),
+					new Beat(startTime+gap*96,"K"), 
+					new Beat(startTime+gap*96,"D"), 
+					new Beat(startTime+gap*99,"J"), // 7 
+					new Beat(startTime+gap*103,"K"),
+					new Beat(startTime+gap*109,"K"),
+					new Beat(startTime+gap*111,"K"),
+					new Beat(startTime+gap*112,"K"),
+					new Beat(startTime+gap*115,"J"), // 8
+					new Beat(startTime+gap*119,"K"),
+					new Beat(startTime+gap*125,"K"),
+					new Beat(startTime+gap*127,"K"),
+					new Beat(startTime+gap*128,"K"),
+					new Beat(startTime+gap*131,"J"), // 9
+					new Beat(startTime+gap*135,"K"),
+					new Beat(startTime+gap*141,"K"),
+					new Beat(startTime+gap*143,"K"),
 					new Beat(startTime+gap*144,"K"),
-					new Beat(startTime+gap*145,"K"),
-					new Beat(startTime+gap*148,"J"),
-					new Beat(startTime+gap*152,"K"),
+					new Beat(startTime+gap*147,"J"), // 10
+					new Beat(startTime+gap*151,"K"),
+					new Beat(startTime+gap*157,"K"),
 					new Beat(startTime+gap*159,"K"),
 					new Beat(startTime+gap*160,"K"),
-					new Beat(startTime+gap*161,"K"),
-					new Beat(startTime+gap*164,"J"),
-					new Beat(startTime+gap*168,"K"),
+					new Beat(startTime+gap*163,"J"), // 11
+					new Beat(startTime+gap*167,"K"),
+					new Beat(startTime+gap*173,"K"),
 					new Beat(startTime+gap*175,"K"),
 					new Beat(startTime+gap*176,"K"),
-					new Beat(startTime+gap*177,"K"),
-					new Beat(startTime+gap*180,"J"),
-					new Beat(startTime+gap*184,"K"),
+					new Beat(startTime+gap*179,"J"), // 12
+					new Beat(startTime+gap*183,"K"),
+					new Beat(startTime+gap*189,"K"),
 					new Beat(startTime+gap*191,"K"),
 					new Beat(startTime+gap*192,"K"),
-					new Beat(startTime+gap*193,"K"),
-					new Beat(startTime+gap*197,"J"),
-					new Beat(startTime+gap*201,"K"),
+					new Beat(startTime+gap*195,"J"), // 13 - 새로운 음 섞임 (왼손) - 여기부터 손봐야..
+					new Beat(startTime+gap*197,"D"), 	//왼1
+					new Beat(startTime+gap*199,"K"),
+					new Beat(startTime+gap*200,"S"), 	//왼2
+					new Beat(startTime+gap*205,"K"),
 					new Beat(startTime+gap*207,"K"),
-					new Beat(startTime+gap*208,"K"),
-					new Beat(startTime+gap*209,"K"),
-					new Beat(startTime+gap*212,"J"),
-					new Beat(startTime+gap*217,"K"),
-					new Beat(startTime+gap*222,"K"),
-					new Beat(startTime+gap*224,"K"),
-					new Beat(startTime+gap*225,"K"),
-					new Beat(startTime+gap*228,"J"),
-					new Beat(startTime+gap*232,"K"),
+					new Beat(startTime+gap*207,"D"), 	//왼3
+					new Beat(startTime+gap*208,"K"), 
+					new Beat(startTime+gap*209,"D"), 	//왼4
+					new Beat(startTime+gap*210,"D"), 	//왼5
+					new Beat(startTime+gap*211,"J"), // 14
+					new Beat(startTime+gap*213,"D"),	//왼1
+					new Beat(startTime+gap*215,"K"),
+					new Beat(startTime+gap*216,"S"),	//왼2
+					new Beat(startTime+gap*221,"K"),
+					new Beat(startTime+gap*223,"K"),
+					new Beat(startTime+gap*223,"D"), 	//왼3
+					new Beat(startTime+gap*224,"K"), 
+					new Beat(startTime+gap*225,"D"),	//왼4
+					new Beat(startTime+gap*226,"D"),	//왼5
+					new Beat(startTime+gap*227,"J"), // 15
+					new Beat(startTime+gap*228,"S"),	//왼1
+					new Beat(startTime+gap*231,"K"),
+					new Beat(startTime+gap*232,"S"),	//왼2
+					new Beat(startTime+gap*233,"D"),	//왼3
+					new Beat(startTime+gap*237,"K"),
 					new Beat(startTime+gap*239,"K"),
-					new Beat(startTime+gap*240,"K"),
-					new Beat(startTime+gap*242,"K"),
-					new Beat(startTime+gap*245,"K"),
-					new Beat(startTime+gap*249,"J"),
+					new Beat(startTime+gap*239,"D"),	//왼4
+					new Beat(startTime+gap*240,"K"), 
+					new Beat(startTime+gap*241,"D"),	//왼5
+					new Beat(startTime+gap*242,"D"),	//왼6
+					new Beat(startTime+gap*246,"D"),	//왼7
+					new Beat(startTime+gap*249,"J"), // 16 
+					new Beat(startTime+gap*249,"S"),	//왼1
 					new Beat(startTime+gap*251,"Space"),
+					new Beat(startTime+gap*256,"S"),	//왼2
+					new Beat(startTime+gap*257,"S"),	//왼3
 					new Beat(startTime+gap*257,"J"),
+					new Beat(startTime+gap*259,"S"),	//왼4
 					new Beat(startTime+gap*262,"K"),
-					new Beat(startTime+gap*265,"J"),
+					new Beat(startTime+gap*262,"F"),	//왼5
+					new Beat(startTime+gap*265,"J"), // 17
+					new Beat(startTime+gap*265,"D"),	//왼1
 					new Beat(startTime+gap*272,"K"),
 					new Beat(startTime+gap*273,"K"),
 					new Beat(startTime+gap*274,"K"),
 					new Beat(startTime+gap*277,"K"),
-					new Beat(startTime+gap*281,"J"),
+					new Beat(startTime+gap*281,"J"), // 18
 					new Beat(startTime+gap*288,"K"),
 					new Beat(startTime+gap*289,"K"),
 					new Beat(startTime+gap*290,"K"),
